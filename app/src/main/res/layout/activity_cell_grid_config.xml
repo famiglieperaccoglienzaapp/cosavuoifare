@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    tools:context="com.whatdoyouwanttodo.config.CellGridConfigActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/activity_config_space_large"
+        android:layout_marginLeft="@dimen/activity_config_space_large"
+        android:layout_marginRight="@dimen/activity_config_space_large"
+        android:layout_marginTop="@dimen/activity_config_space_large"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_small"
+            android:layout_marginTop="@dimen/activity_config_space_small"
+            android:gravity="center"
+            android:text="@string/activity_cell_grid_config_cell_name"
+            android:textColor="@color/soft_black" />
+
+        <ScrollView
+            android:id="@+id/config_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/activity_config_space_large"
+        android:layout_marginRight="@dimen/activity_config_space_large"
+        android:layout_marginTop="@dimen/activity_config_space_large"
+        android:layout_weight="1"
+        android:background="#202020"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_config_space_small"
+            android:layout_marginTop="@dimen/activity_config_space_small"
+            android:text="@string/activity_grid_config_preview"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/chessboard_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/activity_config_space_small"
+            android:layout_marginLeft="@dimen/activity_config_space_small"
+            android:layout_marginRight="@dimen/activity_config_space_small"
+            android:layout_marginTop="@dimen/activity_config_space_small"
+            android:orientation="vertical" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.whatdoyouwanttodo.GeneralSettingsActivity" >
+
+    <item
+        android:id="@+id/action_back"
+        android:icon="@drawable/ic_back"
+        android:title="@string/activity_general_settings_back"
+        app:showAsAction="always|withText"/>
+
+</menu>

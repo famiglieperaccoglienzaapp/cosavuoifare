@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_config_space_large"
+    android:paddingLeft="@dimen/activity_config_space_large"
+    android:paddingRight="@dimen/activity_config_space_large"
+    android:paddingTop="@dimen/activity_config_space_large"
+    tools:context="com.whatdoyouwanttodo.config.VideoPlaylistConfigActivity" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/activity_config_space_large"
+        android:paddingLeft="@dimen/activity_config_space_large"
+        android:paddingRight="@dimen/activity_config_space_large"
+        android:paddingTop="@dimen/activity_config_space_large" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_small"
+                android:layout_marginRight="@dimen/activity_config_space_small"
+                android:layout_marginTop="@dimen/activity_config_space_small"
+                android:text="@string/activity_video_view_config_name"
+                android:textColor="@color/soft_black" />
+
+            <EditText
+                android:id="@+id/video_view_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_config_space_small"
+                android:layout_marginLeft="@dimen/activity_config_text_margin"
+                android:layout_marginRight="@dimen/activity_config_text_margin"
+                android:hint="@string/activity_video_view_config_name_default"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_small"
+                android:layout_marginRight="@dimen/activity_config_space_small"
+                android:layout_marginTop="@dimen/activity_config_space_small"
+                android:text="@string/activity_video_view_config_videolist_name"
+                android:textColor="@color/soft_black" />
+
+            <LinearLayout
+                android:id="@+id/layout_video_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_text_margin"
+                android:layout_marginRight="@dimen/activity_config_text_margin"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_config_space_medium"
+                android:paddingTop="@dimen/activity_config_space_medium" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

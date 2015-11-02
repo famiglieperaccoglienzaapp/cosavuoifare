@@ -1,0 +1,31 @@
+<resources>
+
+    <!--
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+    -->
+    <dimen name="activity_horizontal_margin">32dp</dimen>
+
+    <!-- Config Settings -->
+    <dimen name="activity_config_space_large">36dp</dimen>
+    <dimen name="activity_config_space_medium">16dp</dimen>
+    <dimen name="activity_config_space_small">6dp</dimen>
+    <dimen name="activity_config_space_very_small">2dp</dimen>
+    <dimen name="activity_config_text_width">268dp</dimen>
+    <dimen name="activity_config_secondary_text_width">192dp</dimen>
+    <dimen name="activity_config_text_margin">32dp</dimen>
+    <dimen name="activity_config_button_width">64dp</dimen>
+    <dimen name="activity_config_button_height">32dp</dimen>
+    <dimen name="activity_config_button_width_large">128dp</dimen>
+    <dimen name="activity_config_button_height_large">64dp</dimen>
+    <dimen name="activity_config_button_height_large_x">85dp</dimen>
+
+    <!-- All Grid View Settings -->
+    <dimen name="activity_all_grid_view_chessboard_height">320dp</dimen>
+
+    <!-- Back Button -->
+    <dimen name="back_button_size">166dp</dimen>
+    <dimen name="back_button_text_size">36dp</dimen>
+
+</resources>

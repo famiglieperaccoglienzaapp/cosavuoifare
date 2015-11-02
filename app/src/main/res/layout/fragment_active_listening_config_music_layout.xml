@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/activity_config_space_small" >
+
+    <LinearLayout
+        android:id="@+id/preview_image_container"
+        android:layout_width="@dimen/activity_config_text_width"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_config_space_small"
+        android:paddingLeft="@dimen/activity_config_space_small"
+        android:paddingRight="@dimen/activity_config_space_small"
+        android:paddingTop="@dimen/activity_config_space_small" >
+
+        <ImageView
+            android:id="@+id/preview_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/content_description"
+            android:paddingBottom="@dimen/activity_config_space_small"
+            android:paddingLeft="@dimen/activity_config_space_small"
+            android:paddingRight="@dimen/activity_config_space_small"
+            android:paddingTop="@dimen/activity_config_space_small"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cell_play" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/preview_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_config_space_small"
+            android:background="@drawable/config_arrow_button"
+            android:contentDescription="@string/content_description"
+            android:text="@string/activity_active_listening_config_new_music" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/activity_config_space_small"
+            android:paddingLeft="@dimen/activity_config_space_small"
+            android:paddingTop="@dimen/activity_config_space_small" >
+
+            <TextView
+                android:id="@+id/preview_text"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/activity_active_listening_config_default"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/preview_delete"
+                android:layout_width="@dimen/activity_config_button_height_large"
+                android:layout_height="@dimen/activity_config_button_height_large"
+                android:layout_marginLeft="@dimen/activity_config_space_small"
+                android:background="@drawable/config_delete_button" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

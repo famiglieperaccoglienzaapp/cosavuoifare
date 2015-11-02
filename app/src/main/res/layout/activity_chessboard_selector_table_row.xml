@@ -1,0 +1,81 @@
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/grids_table_row"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.whatdoyouwanttodo.config.ChessboardSelectorActivity" >
+
+    <LinearLayout
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:layout_weight="0.5"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/grid_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageButton
+                android:id="@+id/grid_image1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#202020"
+                android:contentDescription="@string/content_description" />
+
+            <CheckBox
+                android:id="@+id/grid_check1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/grid_container2"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:layout_weight="0.5"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/grid_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageButton
+                android:id="@+id/grid_image2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#202020"
+                android:contentDescription="@string/content_description" />
+
+            <CheckBox
+                android:id="@+id/grid_check2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</TableRow>

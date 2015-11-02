@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.whatdoyouwanttodo.VideoViewConfigActivity" >
+
+    <item
+        android:id="@+id/action_back"
+        android:icon="@drawable/ic_back"
+        android:title="@string/activity_cell_grid_config_action_bar_configure"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_save"
+        android:title="@string/activity_active_listening_config_save"
+        app:showAsAction="always|withText"/>
+    <!-- <item -->
+    <!-- android:id="@+id/action_preview_content" -->
+    <!-- android:icon="@drawable/ic_preview_content" -->
+    <!-- android:title="@string/activity_active_listening_config_preview_text" -->
+    <!-- app:showAsAction="always|withText"/> -->
+
+</menu>

@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.whatdoyouwanttodo.configdesign.GridConfigActivity" >
+
+    <item
+        android:id="@+id/action_dismiss_chessboard"
+        android:icon="@drawable/ic_back"
+        android:title="@string/activity_grid_config_action_bar_dismiss_chessboard"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/action_overview"
+        android:icon="@drawable/ic_grid"
+        android:title="@string/activity_grid_config_action_bar_overview"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/action_grid_save"
+        android:icon="@drawable/ic_save"
+        android:title="@string/activity_grid_config_action_bar_configure"
+        app:showAsAction="always|withText"/>
+
+</menu>

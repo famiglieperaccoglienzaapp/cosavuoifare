@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_config_space_medium"
+    android:paddingLeft="@dimen/activity_config_space_medium"
+    android:paddingRight="@dimen/activity_config_space_medium"
+    android:paddingTop="@dimen/activity_config_space_medium"
+    tools:context="com.whatdoyouwanttodo.MusicSlidesConfigActivity$PlaceholderFragment" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_very_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:text="@string/activity_music_slides_config_name"
+        android:textColor="@color/soft_black" />
+
+    <EditText
+        android:id="@+id/music_slides_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_small"
+        android:layout_marginLeft="@dimen/activity_config_text_margin"
+        android:layout_marginRight="@dimen/activity_config_text_margin"
+        android:hint="@string/activity_music_slides_config_name_default"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:text="@string/activity_music_slides_config_images"
+        android:textColor="@color/soft_black" />
+
+    <LinearLayout
+        android:id="@+id/imagesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_config_space_small"
+        android:paddingLeft="@dimen/activity_config_text_margin"
+        android:paddingRight="@dimen/activity_config_text_margin" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_very_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:text="@string/activity_music_slides_config_music"
+        android:textColor="@color/soft_black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_small"
+        android:layout_marginLeft="@dimen/activity_config_text_margin"
+        android:layout_marginRight="@dimen/activity_config_text_margin"
+        android:layout_marginTop="@dimen/activity_config_space_very_small"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/preview_play_music"
+            android:layout_width="@dimen/activity_config_button_height_large"
+            android:layout_height="@dimen/activity_config_button_height_large"
+            android:contentDescription="@string/content_description"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cell_play" />
+
+        <Button
+            android:id="@+id/btn_music"
+            android:layout_width="0dip"
+            android:layout_height="@dimen/activity_config_button_height_large"
+            android:layout_marginLeft="@dimen/activity_config_space_large"
+            android:layout_marginRight="@dimen/activity_config_space_large"
+            android:layout_weight="1"
+            android:background="@drawable/config_button"
+            android:text="@string/activity_music_slides_config_music_button" />
+    </LinearLayout>
+
+</LinearLayout>

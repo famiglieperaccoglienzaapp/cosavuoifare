@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    tools:context="com.whatdoyouwanttodo.config.GridConfigActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/activity_config_space_large"
+        android:layout_marginLeft="@dimen/activity_config_space_large"
+        android:layout_marginRight="@dimen/activity_config_space_large"
+        android:layout_marginTop="@dimen/activity_config_space_large"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="@dimen/activity_config_space_small"
+            android:paddingTop="@dimen/activity_config_space_small"
+            android:text="@string/activity_grid_config_table_name"
+            android:textColor="@color/soft_black" />
+
+        <ScrollView
+            android:id="@+id/config_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/grid_config_preview_container"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/activity_config_space_large"
+        android:layout_marginRight="@dimen/activity_config_space_large"
+        android:layout_marginTop="@dimen/activity_config_space_large"
+        android:layout_weight="1"
+        android:background="#202020"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/grid_config_preview_text"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_space_small"
+                android:layout_marginTop="@dimen/activity_config_space_small"
+                android:layout_weight="1"
+                android:text="@string/activity_grid_config_preview"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_mode_swap_off"
+                android:layout_width="@dimen/activity_config_text_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_small"
+                android:layout_marginRight="@dimen/activity_config_space_small"
+                android:layout_marginTop="@dimen/activity_config_space_small"
+                android:background="@drawable/btn_mode_swap_selector" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/chessboard_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/activity_config_space_small"
+            android:layout_marginLeft="@dimen/activity_config_space_small"
+            android:layout_marginRight="@dimen/activity_config_space_small"
+            android:layout_marginTop="@dimen/activity_config_space_small"
+            android:orientation="vertical" />
+    </LinearLayout>
+
+</LinearLayout>

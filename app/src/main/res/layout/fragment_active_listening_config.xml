@@ -1,0 +1,464 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_config_space_medium"
+    android:paddingLeft="@dimen/activity_config_space_medium"
+    android:paddingRight="@dimen/activity_config_space_medium"
+    android:paddingTop="@dimen/activity_config_space_medium"
+    tools:context="com.whatdoyouwanttodo.ActiveListeningConfigActivity$PlaceholderFragment" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_very_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:text="@string/activity_active_listening_config_name"
+        android:textColor="@color/soft_black" />
+
+    <EditText
+        android:id="@+id/active_listening_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_small"
+        android:layout_marginLeft="@dimen/activity_config_text_margin"
+        android:layout_marginRight="@dimen/activity_config_text_margin"
+        android:hint="@string/activity_active_listening_config_name_default"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_very_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_medium"
+        android:text="@string/activity_active_listening_config_listen_phase"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/soft_black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_config_text_margin" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_very_small"
+            android:layout_marginLeft="@dimen/activity_config_space_small"
+            android:layout_marginRight="@dimen/activity_config_space_small"
+            android:layout_marginTop="@dimen/activity_config_space_small"
+            android:text="@string/activity_active_listening_config_music_playlist"
+            android:textColor="@color/soft_black" />
+
+        <LinearLayout
+            android:id="@+id/musicsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_config_space_small"
+            android:paddingLeft="@dimen/activity_config_text_margin"
+            android:paddingRight="@dimen/activity_config_text_margin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_very_small"
+            android:layout_marginLeft="@dimen/activity_config_space_small"
+            android:layout_marginRight="@dimen/activity_config_space_small"
+            android:layout_marginTop="@dimen/activity_config_space_small"
+            android:text="@string/activity_active_listening_config_background"
+            android:textColor="@color/soft_black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_small"
+            android:layout_marginLeft="@dimen/activity_config_text_margin"
+            android:layout_marginRight="@dimen/activity_config_text_margin"
+            android:layout_marginTop="@dimen/activity_config_space_very_small"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/background_preview"
+                android:layout_width="@dimen/activity_config_button_height_large"
+                android:layout_height="@dimen/activity_config_button_height_large"
+                android:contentDescription="@string/content_description"
+                android:scaleType="fitCenter" />
+
+            <Button
+                android:id="@+id/background_button"
+                android:layout_width="0dip"
+                android:layout_height="@dimen/activity_config_button_height_large"
+                android:layout_marginLeft="@dimen/activity_config_space_small"
+                android:layout_weight="1"
+                android:background="@drawable/config_button"
+                android:text="@string/activity_active_listening_config_background_button" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_very_small"
+            android:layout_marginLeft="@dimen/activity_config_space_small"
+            android:layout_marginRight="@dimen/activity_config_space_small"
+            android:layout_marginTop="@dimen/activity_config_space_small"
+            android:text="@string/activity_active_listening_config_interval"
+            android:textColor="@color/soft_black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_small"
+            android:layout_marginLeft="@dimen/activity_config_text_margin"
+            android:layout_marginRight="@dimen/activity_config_text_margin"
+            android:layout_marginTop="@dimen/activity_config_space_very_small"
+            android:orientation="vertical" >
+
+            <SeekBar
+                android:id="@+id/interval_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="12dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/slider0" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider5" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider10" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider15" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider20" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider30" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider40" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider50" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider60" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider120" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_very_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_medium"
+        android:text="@string/activity_active_listening_config_action_phase"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/soft_black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_config_text_margin" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_very_small"
+            android:layout_marginLeft="@dimen/activity_config_space_small"
+            android:layout_marginRight="@dimen/activity_config_space_small"
+            android:layout_marginTop="@dimen/activity_config_space_small"
+            android:text="@string/activity_active_listening_config_registration1"
+            android:textColor="@color/soft_black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_small"
+            android:layout_marginLeft="@dimen/activity_config_text_margin"
+            android:layout_marginRight="@dimen/activity_config_text_margin"
+            android:layout_marginTop="@dimen/activity_config_space_very_small"
+            android:orientation="vertical" >
+
+            <SeekBar
+                android:id="@+id/registration_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="12dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/slider0" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider1" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider2" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider3" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider6" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider10" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider15" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider30" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider60" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider120" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_very_small"
+            android:layout_marginLeft="@dimen/activity_config_space_small"
+            android:layout_marginRight="@dimen/activity_config_space_small"
+            android:layout_marginTop="@dimen/activity_config_space_small"
+            android:text="@string/activity_active_listening_config_registration"
+            android:textColor="@color/soft_black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_small"
+            android:layout_marginLeft="@dimen/activity_config_text_margin"
+            android:layout_marginRight="@dimen/activity_config_text_margin"
+            android:layout_marginTop="@dimen/activity_config_space_very_small"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/preview_play_registration"
+                android:layout_width="@dimen/activity_config_button_height_large"
+                android:layout_height="@dimen/activity_config_button_height_large"
+                android:contentDescription="@string/content_description"
+                android:scaleType="fitCenter"
+                android:src="@drawable/cell_play" />
+
+            <Button
+                android:id="@+id/btn_registration"
+                android:layout_width="0dip"
+                android:layout_height="@dimen/activity_config_button_height_large"
+                android:layout_marginLeft="@dimen/activity_config_space_small"
+                android:layout_weight="1"
+                android:background="@drawable/config_button"
+                android:text="@string/activity_active_listening_config_registration_button" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_very_small"
+            android:layout_marginLeft="@dimen/activity_config_space_small"
+            android:layout_marginRight="@dimen/activity_config_space_small"
+            android:layout_marginTop="@dimen/activity_config_space_small"
+            android:text="@string/activity_active_listening_config_registration_pause"
+            android:textColor="@color/soft_black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_config_space_small"
+            android:layout_marginLeft="@dimen/activity_config_text_margin"
+            android:layout_marginRight="@dimen/activity_config_text_margin"
+            android:layout_marginTop="@dimen/activity_config_space_very_small"
+            android:orientation="vertical" >
+
+            <SeekBar
+                android:id="@+id/registration_pause_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="12dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/slider0" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider1" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider2" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider3" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider6" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider10" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider15" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider30" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider60" />
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/slider120" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

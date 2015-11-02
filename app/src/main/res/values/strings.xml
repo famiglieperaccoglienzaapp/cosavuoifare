@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * Copyright (C) 2012 Paul Burke
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+<resources>
+    <string name="empty_directory">Empty Directory</string>
+    <string name="storage_removed">Storage was removed or unmounted.</string>
+    <string name="choose_file">Select a file</string>
+    <string name="error_selecting_file">Error selecting File</string>
+    <string name="internal_storage">Internal storage</string>
+
+    <string name="app_name">What Do You Want To Do</string>
+    <string name="app_name_audio_file_selector">Audio Picker</string>
+    <string name="app_name_image_file_selector">Image Picker</string>
+    <string name="app_name_video_file_selector">Video Picker</string>
+    <string name="app_name_zip_file_selector">Zip Archive Picker</string>
+
+    <!-- Welcome Activity -->
+    <string name="activity_welcome_title">What Do You Want To Do?</string>
+    <string name="activity_welcome_show_chessboard">Show Main Table</string>
+    <string name="activity_welcome_warning1">Warning: enable WiFy to see YouTube video</string>
+    <string name="activity_welcome_info_title">Info</string>
+    <string name="activity_welcome_info_message">What Do You Want To Do? version 1.0\nCommunication Board Player and Constructor</string>
+    <string name="activity_welcome_info_confirm">OK</string>
+
+    <!-- Chessboard Activity -->
+    <string name="activity_chessboard_title">What Do You Want To Do?</string>
+    <string name="activity_chessboard_action_settings">Settings</string>
+    <string name="activity_chessboard_settings_mode">Settings Mode</string>
+
+    <!-- Grid Config Activity -->
+    <string name="activity_grid_config_title">Configuration</string>
+    <string name="activity_grid_config_action_bar_configure">Save and Exit</string>
+    <string name="activity_grid_config_action_bar_dismiss_chessboard">Dismiss and Exit</string>
+    <string name="activity_grid_config_action_bar_overview">Change Boards</string>
+    <string name="activity_grid_config_name_hint">Board Name</string>
+    <string name="activity_grid_config_name">Name</string>
+    <string name="activity_grid_config_table_name">Communication Board Config</string>
+    <string name="activity_grid_config_dimension">Size</string>
+    <string name="activity_grid_config_color">Background Color</string>
+    <string name="activity_grid_config_border">Border Width</string>
+    <string name="activity_grid_config_bottons">Picture Cards Layout</string>
+    <string name="activity_grid_config_preview">Preview</string>
+    <string name="activity_grid_config_swap_mode">Swap Picture Cards! (2 tap)</string>
+    <string name="activity_grid_config_exit_dialog_title">Save?</string>
+    <string name="activity_grid_config_exit_dialog_message">Save Communication Board before exit?"</string>
+    <string name="activity_grid_config_exit_dialog_yes">Yes</string>
+    <string name="activity_grid_config_exit_dialog_no">No</string>
+    <string name="activity_grid_config_swap1">another Tap &#8230;</string>
+    <string name="activity_grid_config_delete_root_grid">You Can\'t Do That!</string>
+    <string name="activity_grid_config_delete_root_grid_message">First board can not be deleted</string>
+    <string name="activity_grid_config_delete_root_grid_confirm">OK</string>
+    <string name="activity_grid_config_delete_grid">First remove the cards!</string>
+    <string name="activity_grid_config_delete_grid_message">First remove the cards then remove communication board</string>
+    <string name="activity_grid_config_delete_grid_confirm">OK</string>
+    <string name="activity_grid_config_delete_grid_action">Remove the container and contents?</string>
+    <string name="activity_grid_config_delete_grid_message_action">Yes</string>
+    <string name="activity_grid_config_delete_grid_confirm_action">No</string>
+
+    <!-- Cell Grid Config Activity -->
+    <string name="activity_cell_grid_config_title">Picture Configuration</string>
+    <string name="activity_cell_grid_config_action_bar_configure">Back</string>
+    <string name="activity_cell_grid_config_image_text_and_audio">Image and Sound</string>
+    <string name="activity_cell_grid_config_cell_name">Picture Config</string>
+    <string name="activity_cell_grid_config_name">Name</string>
+    <string name="activity_cell_grid_config_name_hint">Picture Name</string>
+    <string name="activity_cell_grid_config_color">Background Color</string>
+    <string name="activity_cell_grid_config_border_width">Border Width</string>
+    <string name="activity_cell_grid_config_border_color">Border Color</string>
+    <string name="activity_cell_grid_config_text_size">Text Size</string>
+    <string name="activity_cell_grid_config_text_color">Text Color</string>
+    <string name="activity_cell_grid_config_text_hint">Write Here</string>
+    <string name="activity_cell_grid_config_action_name_link">Link to board</string>
+    <string name="activity_cell_grid_config_action_name_separator">oppure</string>
+    <string name="activity_cell_grid_config_action_name_activity">Other activities</string>
+    <string name="activity_cell_grid_config_action_link_to">Link to board</string>
+    <string name="activity_cell_grid_config_action_music_slides">Image Playlist</string>
+    <string name="activity_cell_grid_config_action_active_listening">Active Listening</string>
+    <string name="activity_cell_grid_config_action_play_video">Video Playlist</string>
+    <string name="activity_cell_grid_config_choose_image">Choose Image</string>
+    <string name="activity_cell_grid_config_choose_audio">Choose Audio</string>
+    <string name="activity_cell_grid_config_link_to_back">Target: Previous Board</string>
+    <string name="activity_cell_grid_config_tts_message">Write Text To Speech</string>
+    <string name="activity_cell_grid_config_tts_message_confirm">OK</string>
+    <string name="activity_cell_grid_config_tts_alternative">Or</string>
+    <string name="activity_cell_grid_config_tts_message_back">Back</string>C
+    <string name="activity_cell_grid_config_tts_message_select_audio">Select or Record an Audio File</string>
+    <string name="activity_cell_grid_config_override_message1">Link to ### will be replaced</string>
+    <string name="activity_cell_grid_config_override_message2">Activity ### will be replaced</string>
+    <string name="activity_cell_grid_config_override_message_confirm">OK</string>
+    <string name="activity_cell_grid_config_override_message_abort">Back</string>
+
+    <!-- All Grid View Activity -->
+    <string name="activity_all_grid_view_title">Choose a Communication Boards to Edit</string>
+    <string name="activity_all_grid_view_title_selection">Choose the destination Communication Board</string>
+    <string name="activity_all_grid_view_back">Back</string>
+    <string name="activity_all_grid_view_back_with_no_selection">No Link</string>
+    <string name="activity_all_grid_view_new_table_message">Insert New Board Name</string>
+    <string name="activity_all_grid_view_new_table_confirm">Create Board</string>
+    <string name="activity_all_grid_view_new_table_back">Back</string>
+
+    <!-- Music Slides Activity -->
+    <string name="activity_music_slides_title">Music</string>
+    <string name="activity_active_listening_press_again">Press Again</string>
+
+    <!-- Active Listening Activity -->
+    <string name="title_activity_active_listening">Active Listening</string>
+
+    <!-- Video View Activity -->
+    <string name="activity_video_view_title">Video</string>
+    <string name="activity_video_view_dafault">Video</string>
+
+    <!-- Music Slides Config Activity -->
+    <string name="activity_music_slides_config_title">Configure Music Playlist</string>
+    <string name="activity_music_slides_config_name">Name</string>
+    <string name="activity_music_slides_config_music">Background Music</string>
+    <string name="activity_music_slides_config_music_button">Music</string>
+    <string name="activity_music_slides_config_images">Playlist Images</string>
+    <string name="activity_music_slides_config_name_default">Write Here</string>
+    <string name="activity_music_slides_config_default">New Image</string>
+    <string name="activity_music_slides_config_preview">Preview</string>
+    <string name="activity_music_slides_config_preview_button">Preview</string>
+    <string name="activity_music_slides_config_new_image">New Image</string>
+    <string name="activity_music_slides_config_warning">Warning</string>
+    <string name="activity_music_slides_config_warning_message">enter the name and at least one image</string>
+    <string name="activity_music_slides_config_warning_confirm">OK</string>
+
+    <!-- Active Listening Config Activity -->
+    <string name="activity_active_listening_config_title">Configure Active Listening</string>
+    <string name="activity_active_listening_config_name">Name</string>
+    <string name="activity_active_listening_config_name_default">Name</string>
+    <string name="activity_active_listening_config_background">Background image</string>
+    <string name="activity_active_listening_config_background_button">Background Image</string>
+    <string name="activity_active_listening_config_interval">Listening time</string>
+    <string name="activity_active_listening_config_music">Music</string>
+    <string name="activity_active_listening_config_registration1">Waiting time</string>
+    <string name="activity_active_listening_config_registration">Message</string>
+    <string name="activity_active_listening_config_registration_pause">Message Repetition Time</string>
+    <string name="activity_active_listening_config_music_playlist">Music Playlist</string>
+    <string name="activity_active_listening_config_registration_time">10s</string>
+    <string name="activity_active_listening_config_listen_phase">Listening Phase</string>
+    <string name="activity_active_listening_config_action_phase">Interaction phase</string>
+    <string name="activity_active_listening_config_registration_button">Reinforcement Message</string>
+    <string name="activity_active_listening_config_preview">Preview</string>
+    <string name="activity_active_listening_config_preview_text">Preview</string>
+    <string name="activity_active_listening_config_save">Save</string>
+    <string name="activity_active_listening_config_new_music">Add Track</string>
+    <string name="activity_active_listening_config_default">Title</string>
+    <string name="activity_active_listening_config_warning">Warning</string>
+    <string name="activity_active_listening_config_warning_description">enter the name and at least one track</string>
+    <string name="activity_active_listening_config_warning_confirm">OK</string>
+
+    <!-- Video View Config Activity -->
+    <string name="activity_video_view_config_title">Configure Video Playlist</string>
+    <string name="activity_video_view_config_new_video">Add Video</string>
+    <string name="activity_video_view_config_default">Title</string>
+    <string name="activity_video_view_config_name">Name</string>
+    <string name="activity_video_view_config_videolist_name">Playlist</string>
+    <string name="activity_video_view_config_name_default">Name</string>
+    <string name="activity_video_view_config_select_local_file">Select local File</string>
+    <string name="activity_video_view_config_search_on_youtube">Search on YouTube</string>
+    <string name="activity_video_view_config_warning">Warning</string>
+    <string name="activity_video_view_config_warning_message">enter the name and at least one video</string>
+    <string name="activity_video_view_config_warning_confirm">OK</string>
+
+    <!-- General Settings Activity -->
+    <string name="activity_general_settings_title">Global Settings</string>
+    <string name="activity_general_settings_back">Back</string>
+    <string name="activity_general_settings_reset">Restore the Initial Settings</string>
+    <string name="activity_general_settings_reset_label">Restore Initial Settings</string>
+    <string name="activity_general_settings_reset_message">Restore the Initial Settings?\nREMEMBER TO EXPORT!\nThis will erase all data</string>
+    <string name="activity_general_settings_reset_ok">Yes</string>
+    <string name="activity_general_settings_reset_abort">No, Abort</string>
+    <string name="activity_general_settings_main_chessboard">Main Communication Board</string>
+    <string name="activity_general_settings_change_main_chessboard">Choose First Board</string>
+    <string name="activity_general_settings_share">Export/Import</string>
+    <string name="activity_general_settings_share_single">Export  Communication Boards</string>
+    <string name="activity_general_settings_share_set">Export a Communication Boards with all Linked Board</string>
+    <string name="activity_general_settings_import">Import Communication Boards</string>
+    <string name="activity_general_settings_connection_display_tts">Network, Display e Text-To-Speech</string>
+    <string name="activity_general_settings_youtube_only_with_wifi">YouTube Video only with Wi-Fi enabled</string>
+    <string name="activity_general_settings_fullscreen_mode">Full Screen Mode</string>
+    <string name="activity_general_settings_ware_lock_mode">Keep the Screen On</string>
+    <string name="activity_general_settings_select_main_grid">Choose Main Communication Board</string>
+    <string name="activity_general_settings_export_grids">Select, one at a time, the boards to export</string>
+    <string name="activity_general_settings_confirm_share">Export these Communication Boards?</string>
+    <string name="activity_general_settings_export_grid_set">Select one Board, all linked boards will be included</string>
+    <string name="activity_general_settings_fullscreen_title">Info Full Screen Mode</string>
+    <string name="activity_general_settings_fullscreen_info">the full screen mode do not show navigation bars but is removed at the first touch</string>
+    <string name="activity_general_settings_lockmode_title">Info Keep the Screen On</string>
+    <string name="activity_general_settings_lockmode_info">Android can override this setting. Try to go to Settings > Display and change the values ​​from there</string>
+    <string name="activity_general_settings_texttospeech_title">Info Text-To-Speech</string>
+    <string name="activity_general_settings_texttospeech_info">If you do not find your language, download a Text-To-Speech Engine from Google Play!</string>
+
+    <!-- Chessboard Selector Activity -->
+    <string name="activity_chessboard_selector_title">Select Communication Board</string>
+    <string name="activity_chessboard_selector_title_plural">Select Communication Boards</string>
+    <string name="activity_chessboard_selector_save">Save</string>
+    <string name="activity_chessboard_selector_continue">Next</string>
+    <string name="activity_chessboard_selector_back">Back</string>
+    <string name="activity_chessboard_selector_empty_message">enter at least one board</string>
+    <string name="activity_chessboard_selector_empty_confirm">OK</string>
+
+    <!-- Choose Destination Activity -->
+    <string name="activity_choose_destination_title">Executing Operation</string>
+    <string name="activity_choose_destination_open_file">Open with File Manager</string>
+    <string name="activity_choose_destination_close">Close</string>
+    <string name="activity_choose_destination_override_grids">Overwrite Communication Boards</string>
+    <string name="activity_choose_destination_append_grids">Append Communication Boards</string>
+    <string name="activity_choose_destination_import">Choose import type</string>
+    <string name="activity_choose_destination_export_title">export completed</string>
+    <string name="activity_choose_destination_export_message">The file is saved in WhatDoYouWantToDo/Export</string>
+    <string name="activity_choose_destination_export_failed_title">export failed</string>
+    <string name="activity_choose_destination_export_failed_message">Something went wrong, try again later</string>
+    <string name="activity_choose_destination_import_title">import completed</string>
+    <string name="activity_choose_destination_import_failed_title">inport failed</string>
+    <string name="activity_choose_destination_import_failed_message">Something went wrong, try again later</string>
+    <string name="activity_choose_destination_wait">Wait &#8230;</string>
+    <string name="activity_choose_destination_override_warning_title">Warning</string>
+    <string name="activity_choose_destination_override_warning_message">This import type overwrite existing boards\nYou can export all of your boards before overwriting</string>
+    <string name="activity_choose_destination_override_warning_confirm">Continue</string>
+    <string name="activity_choose_destination_override_warning_abort">Back</string>
+
+    <!-- Tutorial -->
+    <string name="tutorial_name">Introduction</string>
+    <string name="tutorial1">This environment allows you to change communication board properties, tap on picture to edit</string>
+    <string name="tutorial2">This environment allows you to change picture properties, including text, image, sound and action (if any)</string>
+    <string name="tutorial_confirm">I understand</string>
+
+    <!-- Youtube Search Activity -->
+    <string name="activity_youtube_search_title">Search YouTube Video</string>
+    <string name="activity_youtube_search_no_video">No Video Found</string>
+    <string name="activity_youtube_search_failed">Search Failed, check Wi-Fi connection</string>
+    <string name="activity_youtube_search_no_request">Internal Error, try again later</string>
+
+    <!-- Share Summary Activity -->
+    <string name="activity_share_summary_title">Confirm your Communication Boards</string>
+    <string name="activity_share_summary_abort">Abort</string>
+    <string name="activity_share_summary_next">Continue</string>
+
+    <!-- only to suppress warnings / debug -->
+    <string name="content_description">content description</string>
+
+    <!-- Temporary values -->
+    <string name="action_settings">Settings</string>
+
+    <!-- Simple Share Summary Model Class -->
+    <string name="class_simple_share_summary_description1">" cards - "</string>
+    <string name="class_simple_share_summary_description2">" actions"</string>
+    <string name="class_simple_share_summary_description3">" boards - "</string>
+    <string name="class_simple_share_summary_mb">MB</string>
+    <string name="class_simple_share_summary_kb">KB</string>
+    <string name="class_simple_share_summary_b">B</string>
+
+    <!-- Intent Utils Helper Class -->
+    <string name="class_intent_utils_select_zip">Select file to import</string>
+    <string name="class_intent_utils_select_audio">Choose Audio</string>
+    <string name="class_intent_utils_select_image">Choose Image</string>
+    <string name="class_intent_utils_select_video">Choose Video</string>
+
+    <!-- Constants -->
+    <string name="constant_new_cell">New Card</string>
+    <string name="constant_new_table">New Communication Board</string>
+    <string name="constant_back_table_name">Previous Communication Board</string>
+    <string name="constant_new_active_listening">New Active Listening</string>
+    <string name="constant_new_image_playlist">New Image Playlist</string>
+    <string name="constant_new_video_playlist">New Video Playlist</string>
+    <string name="constant_dir_name">WhatDoYouWantToDo</string>
+    <string name="constant_export_dir_name">Export</string>
+    <string name="constant_import_dir_name">Import</string>
+    <string name="constant_thumbnail_dir_name">Thumbnails</string>
+
+    <!-- For graduate Slider -->
+    <string name="slider0">/</string>
+    <string name="slider1">1</string>
+    <string name="slider2">2</string>
+    <string name="slider3">3</string>
+    <string name="slider5">5</string>
+    <string name="slider6">6</string>
+    <string name="slider10">10</string>
+    <string name="slider15">15</string>
+    <string name="slider20">20</string>
+    <string name="slider30">30</string>
+    <string name="slider40">40</string>
+    <string name="slider50">50</string>
+    <string name="slider60">60</string>
+    <string name="slider120">120</string>
+    <string name="title_activity_setting_lock">Open Settings</string>
+
+    <!-- Initial Configuration -->
+    <string name="fc_menu">Menu</string>
+    <string name="fc_stop">Stop</string>
+    <string name="fc_afraid_slides">Afraid Man (Slides)</string>
+    <string name="fc_hachiko">Be Happy</string>
+    <string name="fc_as_colorful_as_ever">Kalimba</string>
+    <string name="fc_germany_vs_brasil">Germany vs. Brasil</string>
+    <string name="fc_lo_hobbit">Pippo e il dormire</string>
+    <string name="fc_train">Train</string>
+    <!-- table name -->
+    <string name="fc_main_table">Main Table</string>
+    <string name="fc_comm_subject">Main Table: Subject</string>
+    <string name="fc_comm_verb">Main Table: Verb</string>
+    <string name="fc_comm_object">Main Table: Object</string>
+    <string name="fc_eat">eat</string>
+    <string name="fc_food">food</string>
+    <string name="fc_entertainment">entertainment</string>
+    <string name="fc_personalization">personalization</string>
+    <!-- Welcome table -->
+    <string name="fc_communication">Communication</string>
+    <string name="fc_theme_table">Custom Board</string>
+    <!-- Communication table 1 -->
+    <string name="fc_i_am">I am</string>
+    <string name="fc_you">You</string>
+    <string name="fc_in_general">Commonly</string>
+    <string name="fc_friends">Friends</string>
+    <string name="fc_friend">Friend</string>
+    <string name="fc_relative">Relative</string>
+    <string name="fc_nurse">Nurse</string>
+    <string name="fc_acquaintance">Person Known</string>
+    <string name="fc_the_time">the Time</string>
+    <string name="fc_the_temperature">the Weather</string>
+    <string name="fc_environment">the Environment</string>
+    <string name="fc_back">Back</string>
+    <!-- Communication table 2 -->
+    <string name="fc_to_do">Do</string>
+    <string name="fc_to_be">Be</string>
+    <string name="fc_want">Want</string>
+    <string name="fc_read">Read</string>
+    <string name="fc_help">Help</string>
+    <string name="fc_go_to">Go</string>
+    <string name="fc_put">Put</string>
+    <string name="fc_get">Get</string>
+    <string name="fc_wait">Wait</string>
+    <string name="fc_open">Open</string>
+    <string name="fc_draw">Draw</string>
+    <!-- Communication table 3 -->
+    <string name="fc_bad">Good</string>
+    <string name="fc_good">Bad</string>
+    <string name="fc_surprised">Surprised</string>
+    <string name="fc_afraid">Afraid</string>
+    <string name="fc_sleep">Sleep</string>
+    <string name="fc_more">More</string>
+    <string name="fc_nothing">Nothing</string>
+    <string name="fc_stop1">Stop</string>
+    <string name="fc_medicine">Medicine</string>
+    <string name="fc_clothes">Clothes</string>
+    <string name="fc_door">Door</string>
+    <!-- theme table, addon activities and personalization -->
+    <string name="fc_good_food">Good Food</string>
+    <string name="fc_bad_food">Bad Food</string>
+    <string name="fc_food_message">I want to eat</string>
+    <string name="fc_bananas">Bananas</string>
+    <string name="fc_water">Water</string>
+    <string name="fc_omelette">Egg Yolk</string>
+    <string name="fc_soup">Soup</string>
+    <string name="fc_cake">Cake</string>
+    <string name="fc_video1">Esempio 1</string>
+    <string name="fc_video2">Esempio 2</string>
+    <string name="title_activity_long_operation">LongOperationActivity</string>
+    <string name="fc_lychee">Lychee</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- First Start Wizard -->
+    <string name="fs_start">starting</string>
+    <string name="fs_stop">closing</string>
+    <string name="fs_create_main_table">Create Example Communication Boards</string>
+    <string name="fs_create_table">"Do "</string>
+    <string name="fs_create_table_files">Rendering Graphics</string>
+    <string name="fs_create_file">"Render "</string>
+    <string name="fs_create_symbol_set">Extracting Mulberry Symbol Set</string>
+    <string name="fs_copy_symbol">"Extract "</string>
+</resources>

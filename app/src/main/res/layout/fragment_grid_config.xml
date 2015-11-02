@@ -1,0 +1,364 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_config_space_medium"
+    android:paddingLeft="@dimen/activity_config_space_medium"
+    android:paddingRight="@dimen/activity_config_space_medium"
+    android:paddingTop="@dimen/activity_config_space_medium" >
+
+    <!--
+    <TextView
+        android:id="@+id/tutorial_name"
+        android:layout_width="@dimen/activity_config_text_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_very_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:text="@string/tutorial_name" />
+
+    <TextView
+        android:id="@+id/tutorial_text"
+        android:layout_width="@dimen/activity_config_text_width"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="@dimen/activity_config_space_small"
+        android:layout_marginLeft="@dimen/activity_config_text_margin"
+        android:layout_marginRight="@dimen/activity_config_text_margin"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:text="@string/tutorial1" />
+
+    <Button
+        android:id="@+id/tutorial_ok"
+        android:layout_width="@dimen/activity_config_text_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_small"
+        android:layout_marginLeft="@dimen/activity_config_text_margin"
+        android:layout_marginRight="@dimen/activity_config_text_margin"
+        android:text="@string/tutorial_confirm" /> -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_very_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:text="@string/activity_grid_config_name"
+        android:textColor="@color/soft_black" />
+
+    <EditText
+        android:id="@+id/et_grid_name"
+        android:layout_width="@dimen/activity_config_text_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_small"
+        android:layout_marginLeft="@dimen/activity_config_text_margin"
+        android:layout_marginRight="@dimen/activity_config_text_margin"
+        android:hint="@string/activity_grid_config_name_hint"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_very_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:text="@string/activity_grid_config_dimension"
+        android:textColor="@color/soft_black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_dimension11"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+
+            <Button
+                android:id="@+id/btn_dimension12"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+
+            <Button
+                android:id="@+id/btn_dimension13"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+
+            <Button
+                android:id="@+id/btn_dimension14"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_dimension21"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+
+            <Button
+                android:id="@+id/btn_dimension22"
+                style="@drawable/btn_content_empty"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+
+            <Button
+                android:id="@+id/btn_dimension23"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+
+            <Button
+                android:id="@+id/btn_dimension24"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_dimension31"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+
+            <Button
+                android:id="@+id/btn_dimension32"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+
+            <Button
+                android:id="@+id/btn_dimension33"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+
+            <Button
+                android:id="@+id/btn_dimension34"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_very_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:text="@string/activity_grid_config_color"
+        android:textColor="@color/soft_black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_small"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_color_black"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small"
+                android:background="@drawable/btn_color_black" />
+
+            <Button
+                android:id="@+id/btn_color_gray"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small"
+                android:background="@drawable/btn_color_gray" />
+
+            <Button
+                android:id="@+id/btn_color_white"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small"
+                android:background="@drawable/btn_color_white" />
+
+            <Button
+                android:id="@+id/btn_color_red"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small"
+                android:background="@drawable/btn_color_red" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_color_green"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small"
+                android:background="@drawable/btn_color_green" />
+
+            <Button
+                android:id="@+id/btn_color_blue"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small"
+                android:background="@drawable/btn_color_blue" />
+
+            <Button
+                android:id="@+id/btn_color_yellow"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginRight="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small"
+                android:background="@drawable/btn_color_yellow" />
+
+            <Button
+                android:id="@+id/btn_color_purple"
+                android:layout_width="@dimen/activity_config_button_width"
+                android:layout_height="@dimen/activity_config_button_height"
+                android:layout_marginBottom="@dimen/activity_config_space_very_small"
+                android:layout_marginLeft="@dimen/activity_config_space_very_small"
+                android:layout_marginTop="@dimen/activity_config_space_very_small"
+                android:background="@drawable/btn_color_purple" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_config_space_very_small"
+        android:layout_marginLeft="@dimen/activity_config_space_small"
+        android:layout_marginRight="@dimen/activity_config_space_small"
+        android:layout_marginTop="@dimen/activity_config_space_small"
+        android:text="@string/activity_grid_config_border"
+        android:textColor="@color/soft_black" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+
+        <Button
+            android:id="@+id/btn_border_no_border"
+            android:layout_width="@dimen/activity_config_button_width"
+            android:layout_height="@dimen/activity_config_button_height"
+            android:layout_marginBottom="@dimen/activity_config_space_very_small"
+            android:layout_marginRight="@dimen/activity_config_space_very_small"
+            android:layout_marginTop="@dimen/activity_config_space_very_small"
+            android:background="@drawable/btn_border_no_border" />
+
+        <Button
+            android:id="@+id/btn_border_small"
+            android:layout_width="@dimen/activity_config_button_width"
+            android:layout_height="@dimen/activity_config_button_height"
+            android:layout_marginBottom="@dimen/activity_config_space_very_small"
+            android:layout_marginLeft="@dimen/activity_config_space_very_small"
+            android:layout_marginRight="@dimen/activity_config_space_very_small"
+            android:layout_marginTop="@dimen/activity_config_space_very_small"
+            android:background="@drawable/btn_border_small" />
+
+        <Button
+            android:id="@+id/btn_border_medium"
+            android:layout_width="@dimen/activity_config_button_width"
+            android:layout_height="@dimen/activity_config_button_height"
+            android:layout_marginBottom="@dimen/activity_config_space_very_small"
+            android:layout_marginLeft="@dimen/activity_config_space_very_small"
+            android:layout_marginRight="@dimen/activity_config_space_very_small"
+            android:layout_marginTop="@dimen/activity_config_space_very_small"
+            android:background="@drawable/btn_border_medium" />
+
+        <Button
+            android:id="@+id/btn_border_large"
+            android:layout_width="@dimen/activity_config_button_width"
+            android:layout_height="@dimen/activity_config_button_height"
+            android:layout_marginBottom="@dimen/activity_config_space_very_small"
+            android:layout_marginLeft="@dimen/activity_config_space_very_small"
+            android:layout_marginTop="@dimen/activity_config_space_very_small"
+            android:background="@drawable/btn_border_large" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/check_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:gravity="center"
+    tools:context="com.whatdoyouwanttodo.TestLockActivity" >
+
+    <Button
+        android:id="@+id/check_button1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:text=""
+        android:textSize="28sp"
+        android:typeface="monospace" />
+
+    <Button
+        android:id="@+id/check_button2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_toRightOf="@id/check_button1"
+        android:text=""
+        android:textSize="28sp"
+        android:typeface="monospace" />
+
+    <Button
+        android:id="@+id/check_button3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_toRightOf="@id/check_button2"
+        android:text=""
+        android:textSize="28sp"
+        android:typeface="monospace" />
+
+    <View
+        android:id="@+id/check_led1"
+        android:layout_width="48dp"
+        android:layout_height="12dp"
+        android:layout_below="@id/check_button1"
+        android:background="@color/black" />
+
+    <View
+        android:id="@+id/check_led2"
+        android:layout_width="48dp"
+        android:layout_height="12dp"
+        android:layout_below="@id/check_button1"
+        android:layout_toRightOf="@id/check_button1"
+        android:background="@color/black" />
+
+    <View
+        android:id="@+id/check_led3"
+        android:layout_width="48dp"
+        android:layout_height="12dp"
+        android:layout_below="@id/check_button1"
+        android:layout_toRightOf="@id/check_button2"
+        android:background="@color/black" />
+
+</RelativeLayout>

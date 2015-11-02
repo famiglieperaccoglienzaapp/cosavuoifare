@@ -1,0 +1,180 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_config_space_large"
+    android:paddingLeft="@dimen/activity_config_space_large"
+    android:paddingRight="@dimen/activity_config_space_large"
+    android:paddingTop="@dimen/activity_config_space_large"
+    tools:context="com.whatdoyouwanttodo.config.GeneralSettingsActivity" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_config_space_large"
+            android:paddingLeft="@dimen/activity_config_space_large"
+            android:paddingRight="@dimen/activity_config_space_large"
+            android:paddingTop="@dimen/activity_config_space_large" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_config_space_small"
+                android:text="@string/activity_general_settings_main_chessboard" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_space_large"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/currentChessboardImage"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:contentDescription="@string/content_description"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/cell_no_image_high" />
+
+                <Button
+                    android:id="@+id/changeChessboardButton"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/activity_general_settings_change_main_chessboard" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_config_space_small"
+                android:paddingTop="@dimen/activity_config_space_medium"
+                android:text="@string/activity_general_settings_share" />
+
+            <Button
+                android:id="@+id/shareGridsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_space_large"
+                android:drawableLeft="@drawable/ic_export"
+                android:text="@string/activity_general_settings_share_single" />
+
+            <Button
+                android:id="@+id/shareGridSetButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_space_large"
+                android:drawableLeft="@drawable/ic_export_large"
+                android:text="@string/activity_general_settings_share_set" />
+
+            <Button
+                android:id="@+id/importGrids"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_space_large"
+                android:drawableLeft="@drawable/ic_import"
+                android:text="@string/activity_general_settings_import" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_config_space_small"
+                android:paddingTop="@dimen/activity_config_space_medium"
+                android:text="@string/activity_general_settings_connection_display_tts" />
+
+            <CheckBox
+                android:id="@+id/useYoutubeOnWifiCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_space_large"
+                android:text="@string/activity_general_settings_youtube_only_with_wifi"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_space_large" >
+
+                <CheckBox
+                    android:id="@+id/fullscreenMode"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/activity_general_settings_fullscreen_mode"
+                    android:textColor="@color/black" />
+
+                <ImageButton
+                    android:id="@+id/fullscreenModeInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/content_description"
+                    android:src="@drawable/ic_help" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_space_large" >
+
+                <CheckBox
+                    android:id="@+id/disableLockMode"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/activity_general_settings_ware_lock_mode"
+                    android:textColor="@color/black" />
+
+                <ImageButton
+                    android:id="@+id/disableLockModeInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/content_description"
+                    android:src="@drawable/ic_help" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_space_large" >
+
+                <Spinner
+                    android:id="@+id/textToSpeechLanguage"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/textToSpeechLanguageInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/content_description"
+                    android:src="@drawable/ic_help" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/activity_config_space_small"
+                android:paddingTop="@dimen/activity_config_space_medium"
+                android:text="@string/activity_general_settings_reset_label" />
+
+            <Button
+                android:id="@+id/hardReset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_config_space_large"
+                android:drawableLeft="@drawable/ic_reset"
+                android:text="@string/activity_general_settings_reset" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
