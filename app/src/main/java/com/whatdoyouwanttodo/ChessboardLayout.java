@@ -13,7 +13,7 @@ import com.whatdoyouwanttodo.actions.CallSecondaryCallbackAction;
 import com.whatdoyouwanttodo.actions.GoBackAction;
 import com.whatdoyouwanttodo.actions.StartActiveListeningAction;
 import com.whatdoyouwanttodo.actions.StartChessboardAction;
-import com.whatdoyouwanttodo.actions.StartMusicSlidesAction;
+import com.whatdoyouwanttodo.actions.StartAbrakadabraAction;
 import com.whatdoyouwanttodo.actions.StartVideoAction;
 import com.whatdoyouwanttodo.application.Cell;
 import com.whatdoyouwanttodo.application.Chessboard;
@@ -25,7 +25,7 @@ import com.whatdoyouwanttodo.utils.ImageLoader;
 import com.whatdoyouwanttodo.utils.TtsSoundPool;
 
 /**
- * Rappresenta una tabella AAC, è usato da ChessboardFragment per creare il layout
+ * Rappresenta una tabella AAC, e' usato da ChessboardFragment per creare il layout
  */
 public class ChessboardLayout {
 	public final static String CHESSBOARD = "com.whatdoyouwanttodo.ChessboardFragment.CHESSBOARD";
@@ -147,7 +147,7 @@ public class ChessboardLayout {
 									button.setOnClickListener(new GoBackAction());
 								}
 							} else if (cell.getActivityType() == Cell.ACTIVITY_TYPE_ABRAKADABRA) {
-								button.setOnClickListener(new StartMusicSlidesAction(cell.getActivityParam()));
+								button.setOnClickListener(new StartAbrakadabraAction(cell.getActivityParam()));
 							} else if (cell.getActivityType() == Cell.ACTIVITY_TYPE_ACTIVE_LISTENING) {
 								button.setOnClickListener(new StartActiveListeningAction(cell.getActivityParam()));
 							} else if (cell.getActivityType() == Cell.ACTIVITY_TYPE_PLAY_VIDEO) {

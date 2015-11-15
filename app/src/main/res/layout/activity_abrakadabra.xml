@@ -3,14 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    tools:context="com.whatdoyouwanttodo.MusicSlidesActivity"
+    tools:context="com.whatdoyouwanttodo.AbrakadabraActivity"
     tools:ignore="MergeRootFrame" >
 
     <LinearLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal" />
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/front_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/content_description"
+            android:scaleType="fitCenter" />
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/animated_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/back_button"

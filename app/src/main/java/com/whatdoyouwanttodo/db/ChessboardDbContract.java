@@ -36,14 +36,16 @@ public final class ChessboardDbContract {
         public static final String COLUMN_NAME_ACTIVITY_PARAM = "activity_param";
     }
     
-    public static abstract class MusicSlidesEntry implements BaseColumns {
-        public static final String TABLE_NAME = "music_slides";
+    public static abstract class AbrakadabraEntry implements BaseColumns {
+        public static final String TABLE_NAME = "abrakadabra";
         public static final String COLUMN_NAME_NAME = "name";
+        public static final String COLUMN_NAME_SOUND_PATH = "sound_path";
         public static final String COLUMN_NAME_MUSIC_PATH = "music_path";
+        public static final String COLUMN_NAME_IMAGE_EFFECT = "image_effect";
     }
     
-    public static abstract class MusicSlidesImagePathsEntry implements BaseColumns {
-        public static final String TABLE_NAME = "music_slides_image_paths";
+    public static abstract class AbrakadabraImagePathsEntry implements BaseColumns {
+        public static final String TABLE_NAME = "abrakadabra_image_paths";
         public static final String COLUMN_NAME_IMAGE_PATH_ID = "image_path_id";
         public static final String COLUMN_NAME_IMAGE_PATH = "image_path";
         public static final String COLUMN_NAME_ROW = "row";
@@ -114,19 +116,21 @@ public final class ChessboardDbContract {
                     CellEntry.COLUMN_NAME_ACTIVITY_PARAM + " INTEGER" +
             " )";
     
-    public static final String SQL_CREATE_MUSIC_SLIDES =
-            "CREATE TABLE IF NOT EXISTS " + MusicSlidesEntry.TABLE_NAME + " (" +
-            		MusicSlidesEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            		MusicSlidesEntry.COLUMN_NAME_NAME + " TEXT," +
-            		MusicSlidesEntry.COLUMN_NAME_MUSIC_PATH + " TEXT" +
+    public static final String SQL_CREATE_ABRAKADABRA =
+            "CREATE TABLE IF NOT EXISTS " + AbrakadabraEntry.TABLE_NAME + " (" +
+            		AbrakadabraEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            		AbrakadabraEntry.COLUMN_NAME_NAME + " TEXT," +
+            		AbrakadabraEntry.COLUMN_NAME_SOUND_PATH + " TEXT," +
+            		AbrakadabraEntry.COLUMN_NAME_MUSIC_PATH + " TEXT," +
+            		AbrakadabraEntry.COLUMN_NAME_IMAGE_EFFECT + " INTEGER" +
             " )";
 
-    public static final String SQL_CREATE_MUSIC_SLIDES_IMAGE_PATH =
-            "CREATE TABLE IF NOT EXISTS " + MusicSlidesImagePathsEntry.TABLE_NAME + " (" +
-            		MusicSlidesImagePathsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            		MusicSlidesImagePathsEntry.COLUMN_NAME_IMAGE_PATH_ID + " INTEGER," +
-            		MusicSlidesImagePathsEntry.COLUMN_NAME_IMAGE_PATH + " TEXT," +
-            		MusicSlidesImagePathsEntry.COLUMN_NAME_ROW + " INTEGER" +
+    public static final String SQL_CREATE_ABRAKADABRA_IMAGE_PATH =
+            "CREATE TABLE IF NOT EXISTS " + AbrakadabraImagePathsEntry.TABLE_NAME + " (" +
+            		AbrakadabraImagePathsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            		AbrakadabraImagePathsEntry.COLUMN_NAME_IMAGE_PATH_ID + " INTEGER," +
+            		AbrakadabraImagePathsEntry.COLUMN_NAME_IMAGE_PATH + " TEXT," +
+            		AbrakadabraImagePathsEntry.COLUMN_NAME_ROW + " INTEGER" +
             " )";
     
     public static final String SQL_CREATE_ACTIVE_LISTENING =
@@ -176,10 +180,10 @@ public final class ChessboardDbContract {
             "DROP TABLE IF EXISTS " + CellEntry.TABLE_NAME;
     
     public static final String SQL_DELETE_MUSIC_SLIDES =
-            "DROP TABLE IF EXISTS " + MusicSlidesEntry.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + AbrakadabraEntry.TABLE_NAME;
     
     public static final String SQL_DELETE_MUSIC_SLIDES_IMAGE_PATHS =
-            "DROP TABLE IF EXISTS " + MusicSlidesImagePathsEntry.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + AbrakadabraImagePathsEntry.TABLE_NAME;
     
     public static final String SQL_DELETE_ACTIVE_LISTENING =
             "DROP TABLE IF EXISTS " + ActiveListeningEntry.TABLE_NAME;

@@ -43,7 +43,7 @@
             android:layout_marginLeft="@dimen/activity_config_space_small"
             android:background="@drawable/config_arrow_button"
             android:contentDescription="@string/content_description"
-            android:text="@string/activity_music_slides_config_new_image" />
+            android:text="@string/activity_abrakadabra_config_new_image" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/activity_music_slides_config_default"
+                android:text="@string/activity_abrakadabra_config_default"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/black" />
 

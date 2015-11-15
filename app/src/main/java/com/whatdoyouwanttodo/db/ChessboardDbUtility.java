@@ -17,8 +17,8 @@ import com.whatdoyouwanttodo.db.ChessboardDbContract.ActiveListeningEntry;
 import com.whatdoyouwanttodo.db.ChessboardDbContract.ActiveListeningMusicPathsEntry;
 import com.whatdoyouwanttodo.db.ChessboardDbContract.CellEntry;
 import com.whatdoyouwanttodo.db.ChessboardDbContract.ChessboardEntry;
-import com.whatdoyouwanttodo.db.ChessboardDbContract.MusicSlidesEntry;
-import com.whatdoyouwanttodo.db.ChessboardDbContract.MusicSlidesImagePathsEntry;
+import com.whatdoyouwanttodo.db.ChessboardDbContract.AbrakadabraEntry;
+import com.whatdoyouwanttodo.db.ChessboardDbContract.AbrakadabraImagePathsEntry;
 import com.whatdoyouwanttodo.db.ChessboardDbContract.SettingsEntry;
 import com.whatdoyouwanttodo.db.ChessboardDbContract.VideoPlaylistEntry;
 import com.whatdoyouwanttodo.db.ChessboardDbContract.VideoPlaylistVideoUrlEntry;
@@ -116,12 +116,15 @@ public class ChessboardDbUtility {
 		return rowId;
 	}
 
-	public long addMusicSlides(String name, String musicPath, String[] imagePaths) {
+	public long addAbrakadabra(String name, String[] imagePaths,
+			String soundPath, String musicPath, int imageEffect) {
 		ContentValues clValues = new ContentValues();
-		clValues.put(MusicSlidesEntry.COLUMN_NAME_NAME, name);
-		clValues.put(MusicSlidesEntry.COLUMN_NAME_MUSIC_PATH, musicPath);
+		clValues.put(AbrakadabraEntry.COLUMN_NAME_NAME, name);
+		clValues.put(AbrakadabraEntry.COLUMN_NAME_SOUND_PATH, soundPath);
+		clValues.put(AbrakadabraEntry.COLUMN_NAME_MUSIC_PATH, musicPath);
+		clValues.put(AbrakadabraEntry.COLUMN_NAME_IMAGE_EFFECT, imageEffect);
 	    
-		long rowId =  db.insert(MusicSlidesEntry.TABLE_NAME, null, clValues);
+		long rowId =  db.insert(AbrakadabraEntry.TABLE_NAME, null, clValues);
 
 		if(ChessboardApplication.DEBUG_DB) {
 			if(rowId == 0) {
@@ -131,11 +134,11 @@ public class ChessboardDbUtility {
 		
 		for(int i = 0; i < imagePaths.length; i++) {
 			clValues = new ContentValues();
-			clValues.put(MusicSlidesImagePathsEntry.COLUMN_NAME_IMAGE_PATH_ID, rowId);
-			clValues.put(MusicSlidesImagePathsEntry.COLUMN_NAME_IMAGE_PATH, imagePaths[i]);
-			clValues.put(MusicSlidesImagePathsEntry.COLUMN_NAME_ROW, i);
+			clValues.put(AbrakadabraImagePathsEntry.COLUMN_NAME_IMAGE_PATH_ID, rowId);
+			clValues.put(AbrakadabraImagePathsEntry.COLUMN_NAME_IMAGE_PATH, imagePaths[i]);
+			clValues.put(AbrakadabraImagePathsEntry.COLUMN_NAME_ROW, i);
 		   
-			long rowId1 =  db.insert(MusicSlidesImagePathsEntry.TABLE_NAME, null, clValues);
+			long rowId1 =  db.insert(AbrakadabraImagePathsEntry.TABLE_NAME, null, clValues);
 			if(ChessboardApplication.DEBUG_DB) {
 				if(rowId1 == 0) {
 					Log.d(getClass().getName(), "problem on add music slides");
@@ -329,16 +332,18 @@ public class ChessboardDbUtility {
 		return new ChessboardCursor(cursor);
 	}
 	
-	public MusicSlidesCursor getCursorOnMusicSlides(long id) {
-		String[] projection = { MusicSlidesEntry._ID,
-				MusicSlidesEntry.COLUMN_NAME_NAME,
-				MusicSlidesEntry.COLUMN_NAME_MUSIC_PATH };
+	public AbrakadabraCursor getCursorOnAbrakadabra(long id) {
+		String[] projection = { AbrakadabraEntry._ID,
+				AbrakadabraEntry.COLUMN_NAME_NAME,
+				AbrakadabraEntry.COLUMN_NAME_SOUND_PATH,
+				AbrakadabraEntry.COLUMN_NAME_MUSIC_PATH,
+				AbrakadabraEntry.COLUMN_NAME_IMAGE_EFFECT };
 		
-		Cursor cursor = db.query(MusicSlidesEntry.TABLE_NAME, projection,
-				MusicSlidesEntry._ID + " = " + id, new String[0], null,
+		Cursor cursor = db.query(AbrakadabraEntry.TABLE_NAME, projection,
+				AbrakadabraEntry._ID + " = " + id, new String[0], null,
 				null, null);
 
-		return new MusicSlidesCursor(cursor, db);
+		return new AbrakadabraCursor(cursor, db);
 	}
 
 	public ActiveListeningCursor getCursorOnActiveListening(long id) {
@@ -527,8 +532,8 @@ public class ChessboardDbUtility {
 		// recreate all tables
         db.execSQL(ChessboardDbContract.SQL_CREATE_CHESSBOARDS);
         db.execSQL(ChessboardDbContract.SQL_CREATE_CELLS);
-        db.execSQL(ChessboardDbContract.SQL_CREATE_MUSIC_SLIDES);
-        db.execSQL(ChessboardDbContract.SQL_CREATE_MUSIC_SLIDES_IMAGE_PATH);
+        db.execSQL(ChessboardDbContract.SQL_CREATE_ABRAKADABRA);
+        db.execSQL(ChessboardDbContract.SQL_CREATE_ABRAKADABRA_IMAGE_PATH);
         db.execSQL(ChessboardDbContract.SQL_CREATE_ACTIVE_LISTENING);
         db.execSQL(ChessboardDbContract.SQL_CREATE_ACTIVE_LISTENING_IMAGE_PATH);
         db.execSQL(ChessboardDbContract.SQL_CREATE_VIDEO_PLAYLIST);

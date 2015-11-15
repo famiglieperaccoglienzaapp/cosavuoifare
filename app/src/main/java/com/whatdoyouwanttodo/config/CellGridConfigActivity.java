@@ -18,7 +18,7 @@ import com.whatdoyouwanttodo.application.Chessboard;
 import com.whatdoyouwanttodo.application.ChessboardApplication;
 import com.whatdoyouwanttodo.config.ActiveListeningConfigActivity.ActiveListeningReturn;
 import com.whatdoyouwanttodo.config.AllGridViewActivity.AllGridViewReturn;
-import com.whatdoyouwanttodo.config.MusicSlidesConfigActivity.MusicSlidesReturn;
+import com.whatdoyouwanttodo.config.AbrakadabraConfigActivity.AbrakadabraReturn;
 import com.whatdoyouwanttodo.config.VideoPlaylistConfigActivity.VideoPlaylistReturn;
 import com.whatdoyouwanttodo.db.ChessboardCursor;
 import com.whatdoyouwanttodo.db.ChessboardDbUtility;
@@ -151,8 +151,8 @@ public class CellGridConfigActivity extends ActionBarActivity implements
 			}
 		}
 		
-		if(MusicSlidesConfigActivity.haveReturnParams()) {
-			MusicSlidesReturn ret = MusicSlidesConfigActivity.getReturnParams();
+		if(AbrakadabraConfigActivity.haveReturnParams()) {
+			AbrakadabraReturn ret = AbrakadabraConfigActivity.getReturnParams();
 			
 			// update view
 			cell.setActivityType(Cell.ACTIVITY_TYPE_ABRAKADABRA);

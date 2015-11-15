@@ -25,12 +25,12 @@ import com.whatdoyouwanttodo.R;
 import com.whatdoyouwanttodo.application.ActiveListening;
 import com.whatdoyouwanttodo.application.Cell;
 import com.whatdoyouwanttodo.application.Chessboard;
-import com.whatdoyouwanttodo.application.MusicSlides;
+import com.whatdoyouwanttodo.application.Abrakadabra;
 import com.whatdoyouwanttodo.application.VideoPlaylist;
 import com.whatdoyouwanttodo.db.ActiveListeningCursor;
 import com.whatdoyouwanttodo.db.ChessboardCursor;
 import com.whatdoyouwanttodo.db.ChessboardDbUtility;
-import com.whatdoyouwanttodo.db.MusicSlidesCursor;
+import com.whatdoyouwanttodo.db.AbrakadabraCursor;
 import com.whatdoyouwanttodo.db.VideoPlaylistCursor;
 import com.whatdoyouwanttodo.settings.Configurations;
 import com.whatdoyouwanttodo.ui.ChooseButtonSetHelper;
@@ -421,11 +421,11 @@ public class CellGridConfigFragment extends Fragment {
 			ChessboardDbUtility dbu = new ChessboardDbUtility(getActivity());
 			dbu.openReadable();
 
-			MusicSlides ms = null;
-			MusicSlidesCursor cursorCb = dbu.getCursorOnMusicSlides(id);
+			Abrakadabra ms = null;
+			AbrakadabraCursor cursorCb = dbu.getCursorOnAbrakadabra(id);
 			if (cursorCb != null) {
 				while (cursorCb.moveToNext()) {
-					ms = cursorCb.getMusicSlides();
+					ms = cursorCb.getAbrakadabra();
 				}
 				cursorCb.close();
 			}
@@ -506,15 +506,15 @@ public class CellGridConfigFragment extends Fragment {
 			} else if (param == Cell.ACTIVITY_TYPE_ABRAKADABRA) {
 				if(showWarning == false) {
 					if (activityParam == 0) {
-						activityParam = MusicSlidesConfigActivity.NO_ID;
+						activityParam = AbrakadabraConfigActivity.NO_ID;
 					}
-					Intent intent = MusicSlidesConfigActivity.getStartIntent(getActivity(), activityParam);
+					Intent intent = AbrakadabraConfigActivity.getStartIntent(getActivity(), activityParam);
 					startActivity(intent);
 				} else {
 					showOverrideWarning(activityType, activityName, new Action() {
 						@Override
 						public void doAction() {
-							Intent intent = MusicSlidesConfigActivity.getStartIntent(getActivity(), MusicSlidesConfigActivity.NO_ID);
+							Intent intent = AbrakadabraConfigActivity.getStartIntent(getActivity(), AbrakadabraConfigActivity.NO_ID);
 							startActivity(intent);
 						}
 					});

@@ -6,22 +6,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.whatdoyouwanttodo.ChessboardActivity;
-import com.whatdoyouwanttodo.MusicSlidesActivity;
+import com.whatdoyouwanttodo.AbrakadabraActivity;
 
 /**
  * Implementazione di OnClickListener che apre una playlist di immagini
  */
-public class StartMusicSlidesAction implements OnClickListener {
+public class StartAbrakadabraAction implements OnClickListener {
 	private long id;
 
-	public StartMusicSlidesAction(long id) {
+	public StartAbrakadabraAction(long id) {
 		this.id = id;
 	}
 	
 	@Override
 	public void onClick(View view) {
 		Activity activity = ChessboardActivity.getActivity();
-		Intent intent = MusicSlidesActivity.getStartIntentWithId(activity, id);
+		Intent intent = AbrakadabraActivity.getStartIntentWithId(activity, id);
 		activity.startActivity(intent);
 	}
 }

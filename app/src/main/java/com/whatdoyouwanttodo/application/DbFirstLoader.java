@@ -119,16 +119,21 @@ public class DbFirstLoader {
 	private void putRefactoredData(ChessboardDbUtility dbu, LongOperationStep callback) {
 		incrementer.setRange(1, 3, 11);
 		callback.onStep(incrementer.inc(), res.getString(R.string.fs_create_main_table),
-				res.getString(R.string.fs_create_table) + res.getString(R.string.fc_afraid_slides));
+				res.getString(R.string.fs_create_table) + res.getString(R.string.fc_train_slides));
 		// add two abrakadabra		
-		long ak1 = addAbrakadabra(dbu, res.getString(R.string.fc_afraid_slides), f(Constants.getInstance(context).FILE_DIR, "colorful.ogg"), new String[] {
-				f(Constants.getInstance(context).FILE_DIR, "train1.png"),
-				f(Constants.getInstance(context).FILE_DIR, "train2.png"),
-				f(Constants.getInstance(context).FILE_DIR, "train3.png"),
-				f(Constants.getInstance(context).FILE_DIR, "train4.png"),
-				f(Constants.getInstance(context).FILE_DIR, "train5.png"),
-				f(Constants.getInstance(context).FILE_DIR, "train6.png")
-		});
+		long ak1 = addAbrakadabra(
+				dbu,
+				res.getString(R.string.fc_train_slides),
+				new String[] {
+						f(Constants.getInstance(context).FILE_DIR, "train1.png"),
+						f(Constants.getInstance(context).FILE_DIR, "train2.png"),
+						f(Constants.getInstance(context).FILE_DIR, "train3.png"),
+						f(Constants.getInstance(context).FILE_DIR, "train4.png"),
+						f(Constants.getInstance(context).FILE_DIR, "train5.png"),
+						f(Constants.getInstance(context).FILE_DIR, "train6.png") },
+				f(Constants.getInstance(context).FILE_DIR, "drum.ogg"),
+				f(Constants.getInstance(context).FILE_DIR, "colorful.ogg"),
+				Abrakadabra.EFFECT_KENBURNS);
 	
 		// add two active listening
 		callback.onStep(incrementer.inc(), res.getString(R.string.fs_create_main_table),
@@ -142,8 +147,8 @@ public class DbFirstLoader {
 		
 		// add video
 		callback.onStep(incrementer.inc(), res.getString(R.string.fs_create_main_table),
-				res.getString(R.string.fs_create_table) + res.getString(R.string.fc_germany_vs_brasil));
-		long vp1 = addYoutubeVideo(dbu, res.getString(R.string.fc_germany_vs_brasil), new String[] { Configurations.YOUTUBE_PREFIX + "RLZUKqpXYzU" });
+				res.getString(R.string.fs_create_table) + "What is AAC?");
+		long vp1 = addYoutubeVideo(dbu, res.getString(R.string.fc_germany_vs_brasil), new String[] { Configurations.YOUTUBE_PREFIX + "r3m8_YmTDDM" });
 		callback.onStep(incrementer.inc(), res.getString(R.string.fs_create_main_table),
 				res.getString(R.string.fs_create_table) + res.getString(R.string.fc_lo_hobbit));
 		long vp2 = addYoutubeVideo(dbu, res.getString(R.string.fc_lo_hobbit), new String[] { Configurations.YOUTUBE_PREFIX + "47o9S6k7dRk" });
@@ -489,8 +494,10 @@ public class DbFirstLoader {
 	}
 
 	private long addAbrakadabra(ChessboardDbUtility dbu, String name,
-			String musicPath, String[] imagePaths) {
-		return dbu.addMusicSlides(name, musicPath, imagePaths);
+			String[] imagePaths, String soundPath, String musicPath,
+			int imageEffect) {
+		return dbu.addAbrakadabra(name, imagePaths, soundPath, musicPath,
+				imageEffect);
 	}
 
 	private long addActiveListening(ChessboardDbUtility dbu, String name,

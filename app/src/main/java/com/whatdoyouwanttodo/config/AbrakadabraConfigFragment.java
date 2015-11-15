@@ -11,14 +11,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
 import com.whatdoyouwanttodo.R;
+import com.whatdoyouwanttodo.application.Abrakadabra;
 import com.whatdoyouwanttodo.ui.ImageListHelper;
 import com.whatdoyouwanttodo.ui.ImageListHelper.Item;
 import com.whatdoyouwanttodo.utils.FileUtils;
@@ -26,23 +31,24 @@ import com.whatdoyouwanttodo.utils.ImageLoader;
 import com.whatdoyouwanttodo.utils.IntentUtils;
 
 /**
- * Pannello di configurazione per una playlist di immagini, usato da MusicSlidesConfigActivity
+ * Pannello di configurazione per una playlist di immagini, usato da AbrakadabraConfigActivity
  */
-public class MusicSlidesConfigFragment extends Fragment {
-	private static String INTENT_CHANGE_MUSIC = "change_music";
+public class AbrakadabraConfigFragment extends Fragment {
 	private static String INTENT_CHANGE_IMAGE = "change_image";
 	private static String INTENT_ADD_IMAGE = "add_image";
+	private static String INTENT_CHANGE_SOUND = "change_sound";
+	private static String INTENT_CHANGE_MUSIC = "change_music";
 	
 	private ImageListHelper images;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {		
-		View rootView = inflater.inflate(R.layout.fragment_music_slides_config, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_abrakadabra_config, container, false);
 		
 		// initialize name field
 		EditText name = (EditText) rootView.findViewById(R.id.music_slides_name);
-		String nameText = MusicSlidesConfigActivity.ret.getName();
+		String nameText = AbrakadabraConfigActivity.ret.getName();
 		if (nameText != null) {
 			name.setText(nameText);
 		}
@@ -50,16 +56,43 @@ public class MusicSlidesConfigFragment extends Fragment {
 			@Override
 			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 				if (GridConfigFragment.isEditorAction(actionId)) {
-					MusicSlidesConfigActivity.ret.setName(v.getText().toString());
+					AbrakadabraConfigActivity.ret.setName(v.getText().toString());
 					return false;
 				}
 				return false;
 			}
 		});
 		
+		// initialize sound change button
+		Button sound = (Button) rootView.findViewById(R.id.btn_sound);
+		String soundPath = AbrakadabraConfigActivity.ret.getSoundPath();
+		if(soundPath.equals("") == false) {
+			File soundFile = FileUtils.getResourceFile(soundPath);
+			sound.setText(soundFile.getName());
+		}
+		sound.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				// select an music
+				IntentUtils.startSelectAudioIntent(getActivity(), INTENT_CHANGE_SOUND);
+			}
+		});
+		
+		// initialize play sound button
+		ImageView playSound = (ImageView) rootView.findViewById(R.id.preview_play_sound);
+		playSound.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				String soundPath = AbrakadabraConfigActivity.ret.getSoundPath();
+				if (soundPath != null) {
+					IntentUtils.startPlayAudioIntent(getActivity(), soundPath);
+				}
+			}
+		});
+		
 		// initialize music change button
 		Button music = (Button) rootView.findViewById(R.id.btn_music);
-		String musicPath = MusicSlidesConfigActivity.ret.getMusicPath();
+		String musicPath = AbrakadabraConfigActivity.ret.getMusicPath();
 		if(musicPath.equals("") == false) {
 			File musicFile = FileUtils.getResourceFile(musicPath);
 			music.setText(musicFile.getName());
@@ -77,12 +110,34 @@ public class MusicSlidesConfigFragment extends Fragment {
 		playMusic.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				String musicPath = MusicSlidesConfigActivity.ret.getMusicPath();
+				String musicPath = AbrakadabraConfigActivity.ret.getMusicPath();
 				if (musicPath != null) {
 					IntentUtils.startPlayAudioIntent(getActivity(), musicPath);
 				}
 			}
 		});
+		
+		// initialize image effect spinner
+		Spinner imageEffectSpinner = (Spinner) rootView.findViewById(R.id.spn_image_effect);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+		        R.array.activity_abrakadabra_config_image_effect, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		imageEffectSpinner.setAdapter(adapter);
+		imageEffectSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+					public void onItemSelected(AdapterView<?> parent,
+							View view, int pos, long id) {
+						if (pos == 0) {
+							AbrakadabraConfigActivity.ret.setImageEffect(Abrakadabra.EFFECT_NO_EFFECT);
+						} else {
+							AbrakadabraConfigActivity.ret.setImageEffect(Abrakadabra.EFFECT_KENBURNS);
+						}
+					}
+
+					public void onNothingSelected(AdapterView<?> parent) { }
+				});
+		if (AbrakadabraConfigActivity.ret.getImageEffect() == Abrakadabra.EFFECT_KENBURNS) {
+			imageEffectSpinner.setSelection(1);
+		}
 
 		// initialize image list layouts
 		LinearLayout imagesLayout = (LinearLayout) rootView.findViewById(R.id.imagesLayout);
@@ -94,13 +149,13 @@ public class MusicSlidesConfigFragment extends Fragment {
 				String[] paths = new String[items.length];
 				for(int i = 0; i < items.length; i++)
 					paths[i] = items[i].getData();
-				MusicSlidesConfigActivity.ret.setImagePaths(paths);
+				AbrakadabraConfigActivity.ret.setImagePaths(paths);
 			}
 		}, new ImageListHelper.OnAction() {
 			@Override
 			public LinearLayout onMakeLayout(LayoutInflater inflater, ViewGroup parent) {
 				return (LinearLayout) inflater.inflate(
-						R.layout.fragment_music_slides_config_image_layout, parent, false);
+						R.layout.fragment_abrakadabra_config_image_layout, parent, false);
 			}
 
 			@Override
@@ -124,7 +179,7 @@ public class MusicSlidesConfigFragment extends Fragment {
 				IntentUtils.startSelectImageIntent(getActivity(), INTENT_ADD_IMAGE, id);
 			}
 		});
-		String[] imagePaths = MusicSlidesConfigActivity.ret.getImagePaths();
+		String[] imagePaths = AbrakadabraConfigActivity.ret.getImagePaths();
 		Item[] itemList = new Item[imagePaths.length];
 		for(int i = 0; i < imagePaths.length; i++) {
 			File file = new File(imagePaths[i]);
@@ -158,10 +213,19 @@ public class MusicSlidesConfigFragment extends Fragment {
 
 			// update image
 			File musicFile = FileUtils.getResourceFile(musicPath);
-			Button musicButton = (Button) getActivity().findViewById(R.id.btn_music);
-			musicButton.setText(musicFile.getName());
 			
-			MusicSlidesConfigActivity.ret.setMusicPath(musicPath);
+			
+			Button musicButton;
+			
+			if (IntentUtils.getIntentId().equals(INTENT_CHANGE_MUSIC)) {
+				musicButton = (Button) getActivity().findViewById(R.id.btn_music);
+				AbrakadabraConfigActivity.ret.setMusicPath(musicPath);
+			} else {
+				musicButton = (Button) getActivity().findViewById(R.id.btn_sound);
+				AbrakadabraConfigActivity.ret.setSoundPath(musicPath);
+			}
+			
+			musicButton.setText(musicFile.getName());
 		}
 	}
 }

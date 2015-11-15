@@ -12,7 +12,7 @@ import com.whatdoyouwanttodo.config.ChessboardThumbnailManager;
 import com.whatdoyouwanttodo.config.ShareSummaryActivity;
 import com.whatdoyouwanttodo.db.ActiveListeningCursor;
 import com.whatdoyouwanttodo.db.ChessboardDbUtility;
-import com.whatdoyouwanttodo.db.MusicSlidesCursor;
+import com.whatdoyouwanttodo.db.AbrakadabraCursor;
 import com.whatdoyouwanttodo.db.VideoPlaylistCursor;
 import com.whatdoyouwanttodo.settings.Configurations;
 import com.whatdoyouwanttodo.utils.FileUtils;
@@ -115,9 +115,9 @@ public class SimpleShareSummary implements
 			}
 			
 			for(int j = 0; j < abrakadabra.size(); j++) {
-				MusicSlidesCursor cursor = dbu.getCursorOnMusicSlides(abrakadabra.get(j));
+				AbrakadabraCursor cursor = dbu.getCursorOnAbrakadabra(abrakadabra.get(j));
 				while(cursor.moveToNext()) {
-					MusicSlides ms = cursor.getMusicSlides();
+					Abrakadabra ms = cursor.getAbrakadabra();
 					
 					size += getSize(ms.getImagePaths());
 					size += getSize(ms.getMusicPath());

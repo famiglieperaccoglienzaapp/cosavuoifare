@@ -8,18 +8,18 @@ import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.whatdoyouwanttodo.application.MusicSlides;
-import com.whatdoyouwanttodo.db.ChessboardDbContract.MusicSlidesEntry;
-import com.whatdoyouwanttodo.db.ChessboardDbContract.MusicSlidesImagePathsEntry;
+import com.whatdoyouwanttodo.application.Abrakadabra;
+import com.whatdoyouwanttodo.db.ChessboardDbContract.AbrakadabraEntry;
+import com.whatdoyouwanttodo.db.ChessboardDbContract.AbrakadabraImagePathsEntry;
 
 /**
  * Cursore di playlist di immagini
  */
-public class MusicSlidesCursor {
+public class AbrakadabraCursor {
 	private Cursor cursor;
 	private SQLiteDatabase db;
 
-	public MusicSlidesCursor(Cursor cursor, SQLiteDatabase db) {
+	public AbrakadabraCursor(Cursor cursor, SQLiteDatabase db) {
 		this.cursor = cursor;
 		this.db = db;
 	}
@@ -44,29 +44,33 @@ public class MusicSlidesCursor {
 		}
 	}
 
-	public MusicSlides getMusicSlides() {	    
+	public Abrakadabra getAbrakadabra() {	    
 		long id = cursor.getLong(
-				cursor.getColumnIndex(MusicSlidesEntry._ID));
+				cursor.getColumnIndex(AbrakadabraEntry._ID));
 		String name = cursor.getString(
-				cursor.getColumnIndex(MusicSlidesEntry.COLUMN_NAME_NAME));
+				cursor.getColumnIndex(AbrakadabraEntry.COLUMN_NAME_NAME));
+		String soundPath = cursor.getString(
+				cursor.getColumnIndex(AbrakadabraEntry.COLUMN_NAME_SOUND_PATH));
 		String musicPath = cursor.getString(
-				cursor.getColumnIndex(MusicSlidesEntry.COLUMN_NAME_MUSIC_PATH));
+				cursor.getColumnIndex(AbrakadabraEntry.COLUMN_NAME_MUSIC_PATH));
+		int imageEffect = cursor.getInt(
+				cursor.getColumnIndex(AbrakadabraEntry.COLUMN_NAME_IMAGE_EFFECT));
 		
 		String[] projection = { 
-				MusicSlidesImagePathsEntry.COLUMN_NAME_IMAGE_PATH_ID,
-				MusicSlidesImagePathsEntry.COLUMN_NAME_IMAGE_PATH,
-				MusicSlidesImagePathsEntry.COLUMN_NAME_ROW };
+				AbrakadabraImagePathsEntry.COLUMN_NAME_IMAGE_PATH_ID,
+				AbrakadabraImagePathsEntry.COLUMN_NAME_IMAGE_PATH,
+				AbrakadabraImagePathsEntry.COLUMN_NAME_ROW };
 
-		Cursor cursor = db.query(MusicSlidesImagePathsEntry.TABLE_NAME, projection,
-				MusicSlidesImagePathsEntry.COLUMN_NAME_IMAGE_PATH_ID + " = " + id, new String[0], null,
+		Cursor cursor = db.query(AbrakadabraImagePathsEntry.TABLE_NAME, projection,
+				AbrakadabraImagePathsEntry.COLUMN_NAME_IMAGE_PATH_ID + " = " + id, new String[0], null,
 				null, null);
 
 		List<ImagePath> imagePaths = new ArrayList<ImagePath>();
 		while(cursor.moveToNext()) {
 			String imagePath = cursor.getString(
-					cursor.getColumnIndex(MusicSlidesImagePathsEntry.COLUMN_NAME_IMAGE_PATH));
+					cursor.getColumnIndex(AbrakadabraImagePathsEntry.COLUMN_NAME_IMAGE_PATH));
 			int imageRow = cursor.getInt(
-					cursor.getColumnIndex(MusicSlidesImagePathsEntry.COLUMN_NAME_ROW));
+					cursor.getColumnIndex(AbrakadabraImagePathsEntry.COLUMN_NAME_ROW));
 			imagePaths.add(new ImagePath(imagePath, imageRow));
 		}
 		Collections.sort(imagePaths, new Comparator<ImagePath>() {
@@ -83,7 +87,7 @@ public class MusicSlidesCursor {
 			imagePathOrdered[i] = imagePaths.get(i).imagePath;
 		}
 		
-		return new MusicSlides(id, name, imagePathOrdered, musicPath);
+		return new Abrakadabra(id, name, imagePathOrdered, soundPath, musicPath, imageEffect);
 	}
 
 	public void close() {

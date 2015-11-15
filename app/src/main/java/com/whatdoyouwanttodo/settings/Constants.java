@@ -8,7 +8,7 @@ import com.whatdoyouwanttodo.R;
 import com.whatdoyouwanttodo.application.ActiveListening;
 import com.whatdoyouwanttodo.application.Cell;
 import com.whatdoyouwanttodo.application.Chessboard;
-import com.whatdoyouwanttodo.application.MusicSlides;
+import com.whatdoyouwanttodo.application.Abrakadabra;
 import com.whatdoyouwanttodo.application.VideoPlaylist;
 
 /**
@@ -38,8 +38,8 @@ public final class Constants {
 				"", new String[0], 10, "", 10, 5);
 
 		String newImagePlaylistStr = res.getString(R.string.constant_new_image_playlist);
-		NEW_MUSIC_SLIDES = new MusicSlides(0, newImagePlaylistStr,
-				new String[0], "");
+		NEW_MUSIC_SLIDES = new Abrakadabra(0, newImagePlaylistStr,
+				new String[0], "", "", Abrakadabra.EFFECT_NO_EFFECT);
 
 		String newVideoPlaylistStr = res.getString(R.string.constant_new_video_playlist);
 		NEW_VIDEO_PLAYLIST = new VideoPlaylist(0, newVideoPlaylistStr,
@@ -70,7 +70,7 @@ public final class Constants {
 	public final Chessboard NEW_CHESSBOARD;
 	public final String BACK_CHESSBOARD_NAME;
 	public final ActiveListening NEW_ACTIVE_LISTENING;
-	public final MusicSlides NEW_MUSIC_SLIDES;
+	public final Abrakadabra NEW_MUSIC_SLIDES;
 	public final VideoPlaylist NEW_VIDEO_PLAYLIST;
 	public final String FILE_DIR;
 	public final String THUMBNAIL_DIR;

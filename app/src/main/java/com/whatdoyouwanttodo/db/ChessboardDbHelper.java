@@ -19,8 +19,8 @@ public class ChessboardDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(ChessboardDbContract.SQL_CREATE_CHESSBOARDS);
         db.execSQL(ChessboardDbContract.SQL_CREATE_CELLS);
-        db.execSQL(ChessboardDbContract.SQL_CREATE_MUSIC_SLIDES);
-        db.execSQL(ChessboardDbContract.SQL_CREATE_MUSIC_SLIDES_IMAGE_PATH);
+        db.execSQL(ChessboardDbContract.SQL_CREATE_ABRAKADABRA);
+        db.execSQL(ChessboardDbContract.SQL_CREATE_ABRAKADABRA_IMAGE_PATH);
         db.execSQL(ChessboardDbContract.SQL_CREATE_ACTIVE_LISTENING);
         db.execSQL(ChessboardDbContract.SQL_CREATE_ACTIVE_LISTENING_IMAGE_PATH);
         db.execSQL(ChessboardDbContract.SQL_CREATE_VIDEO_PLAYLIST);

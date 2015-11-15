@@ -50,8 +50,8 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
         </activity>
         <activity
-            android:name=".MusicSlidesActivity"
-            android:label="@string/activity_music_slides_title"
+            android:name=".AbrakadabraActivity"
+            android:label="@string/activity_abrakadabra_title"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
         </activity>
@@ -100,8 +100,8 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
         </activity>
         <activity
-            android:name=".config.MusicSlidesConfigActivity"
-            android:label="@string/activity_music_slides_config_title"
+            android:name=".config.AbrakadabraConfigActivity"
+            android:label="@string/activity_abrakadabra_config_title"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
         </activity>
@@ -138,6 +138,12 @@
         <activity
             android:name=".config.ChooseDestinationActivity"
             android:label="@string/activity_choose_destination_title"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+        </activity>
+        <activity
+            android:name=".LongOperationActivity"
+            android:label="@string/title_activity_long_operation"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
         </activity>
@@ -217,12 +223,6 @@
             android:exported="true"
             android:icon="@drawable/ic_folder"
             android:label="@string/app_name_zip_file_selector"
-            android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-        </activity>
-        <activity
-            android:name=".LongOperationActivity"
-            android:label="@string/title_activity_long_operation"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
         </activity>

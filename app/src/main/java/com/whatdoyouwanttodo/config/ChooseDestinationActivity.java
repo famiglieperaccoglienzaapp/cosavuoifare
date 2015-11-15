@@ -49,11 +49,11 @@ import com.whatdoyouwanttodo.application.ActiveListening;
 import com.whatdoyouwanttodo.application.Cell;
 import com.whatdoyouwanttodo.application.Chessboard;
 import com.whatdoyouwanttodo.application.ChessboardApplication;
-import com.whatdoyouwanttodo.application.MusicSlides;
+import com.whatdoyouwanttodo.application.Abrakadabra;
 import com.whatdoyouwanttodo.application.VideoPlaylist;
 import com.whatdoyouwanttodo.db.ActiveListeningCursor;
 import com.whatdoyouwanttodo.db.ChessboardDbUtility;
-import com.whatdoyouwanttodo.db.MusicSlidesCursor;
+import com.whatdoyouwanttodo.db.AbrakadabraCursor;
 import com.whatdoyouwanttodo.db.VideoPlaylistCursor;
 import com.whatdoyouwanttodo.settings.Configurations;
 import com.whatdoyouwanttodo.settings.Constants;
@@ -87,7 +87,7 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 	private Cell[][] cbCells;
 	private String importPath;
 	private TreeMap<String, String> filenameset;
-	private MusicSlides[] musicSlides;
+	private Abrakadabra[] abrakadabra;
 	private ActiveListening[] activeListening;
 	private VideoPlaylist[] videoPlaylist;
 	
@@ -412,17 +412,20 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 
 		if (abrakadabra.size() > 0) {
 			for (int j = 0; j < abrakadabra.size(); j++) {
-				MusicSlidesCursor cursor = dbu
-						.getCursorOnMusicSlides(abrakadabra.get(j));
+				AbrakadabraCursor cursor = dbu
+						.getCursorOnAbrakadabra(abrakadabra.get(j));
 				while (cursor.moveToNext()) {
-					MusicSlides ms = cursor.getMusicSlides();
+					Abrakadabra ak = cursor.getAbrakadabra();
 
-					xmlSerializer.startTag("", "musicslides");
-					long mId = ms.getId();
-					String mName = ms.getName();
-					String[] mImages = ms.getImagePaths();
-					String mMusic = ms.getMusicPath();
+					xmlSerializer.startTag("", "abrakadabra");
+					long mId = ak.getId();
+					String mName = ak.getName();
+					String[] mImages = ak.getImagePaths();
+					String mSound = ak.getSoundPath();
+					String mMusic = ak.getMusicPath();
+					int mImageEffect = ak.getImageEffect();
 					
+					mSound = putExternalFile(mSound);
 					mMusic = putExternalFile(mMusic);
 
 					xmlSerializer.attribute("", "id", Long.toString(mId));
@@ -434,9 +437,11 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 						sb.append(mImages[z]);
 					}
 					xmlSerializer.attribute("", "images", sb.toString());
+					xmlSerializer.attribute("", "sound", mSound);
 					xmlSerializer.attribute("", "audio", mMusic);
+					xmlSerializer.attribute("", "imageeffect", Integer.toString(mImageEffect));
 
-					xmlSerializer.endTag("", "musicslides");
+					xmlSerializer.endTag("", "abrakadabra");
 				}
 				cursor.close();
 			}
@@ -725,20 +730,23 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 		cbCells = null;
 		
 		if(cTag == XmlPullParser.START_TAG && xmlParser.getName().equals("interactions")) {
-			ArrayList<MusicSlides> abrakadabra = new ArrayList<MusicSlides>();
+			ArrayList<Abrakadabra> abrakadabra = new ArrayList<Abrakadabra>();
 			ArrayList<ActiveListening> activelistening = new ArrayList<ActiveListening>();
 			ArrayList<VideoPlaylist> playvideo = new ArrayList<VideoPlaylist>();
 			cTag = xmlParser.nextTag();
-			while(cTag == XmlPullParser.START_TAG && xmlParser.getName().equals("musicslides")) {
+			while(cTag == XmlPullParser.START_TAG && xmlParser.getName().equals("abrakadabra")) {
 				long mId = Long.parseLong(xmlParser.getAttributeValue(null, "id"));
-				String mName = xmlParser.getAttributeValue(null, "id");
+				String mName = xmlParser.getAttributeValue(null, "name");
 				String[] mImages = xmlParser.getAttributeValue(null, "images").split(";");
+				String mSound = xmlParser.getAttributeValue(null, "sound");
 				String mMusic = xmlParser.getAttributeValue(null, "audio");
-				
+				int mImageEffect = Integer.parseInt(xmlParser.getAttributeValue(null, "imageeffect"));
+
 				mImages = getExternalFile(mImages);
+				mSound = getExternalFile(mSound);
 				mMusic = getExternalFile(mMusic);
 				
-				MusicSlides ms = new MusicSlides(mId, mName, mImages, mMusic);
+				Abrakadabra ms = new Abrakadabra(mId, mName, mImages, mSound, mMusic, mImageEffect);
 				abrakadabra.add(ms);
 				
 				cTag = xmlParser.nextTag();
@@ -790,7 +798,7 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 				}
 			}
 			
-			this.musicSlides = abrakadabra.toArray(new MusicSlides[abrakadabra.size()]);
+			this.abrakadabra = abrakadabra.toArray(new Abrakadabra[abrakadabra.size()]);
 			this.activeListening = activelistening.toArray(new ActiveListening[activelistening.size()]);
 			this.videoPlaylist = playvideo.toArray(new VideoPlaylist[playvideo.size()]);
 		}
@@ -825,23 +833,25 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 
 	private void appendToDatabase(ChessboardDbUtility dbu) {		
 		// track ids changes
-		Map<Long, Long> musicSlidesIds = new TreeMap<Long, Long>();
+		Map<Long, Long> abrakadabraIds = new TreeMap<Long, Long>();
 		Map<Long, Long> activeListeningIds = new TreeMap<Long, Long>();
 		Map<Long, Long> videoPlaylistIds = new TreeMap<Long, Long>();
 		Map<Long, Long> chessboardIds = new TreeMap<Long, Long>();
 		
 		// add music slides data
-		if(musicSlides == null) {
-			musicSlides = new MusicSlides[0];
+		if(abrakadabra == null) {
+			abrakadabra = new Abrakadabra[0];
 		}
-		for(int i = 0; i < musicSlides.length; i++) {
-			MusicSlides ms = musicSlides[i];
+		for(int i = 0; i < abrakadabra.length; i++) {
+			Abrakadabra ms = abrakadabra[i];
 			
-			long newId = dbu.addMusicSlides(ms.getName(),
+			long newId = dbu.addAbrakadabra(ms.getName(),
+					ms.getImagePaths(),
+					ms.getSoundPath(),
 					ms.getMusicPath(),
-					ms.getImagePaths());
+					ms.getImageEffect());
 		
-			musicSlidesIds.put(ms.getId(), newId);
+			abrakadabraIds.put(ms.getId(), newId);
 		}
 		
 		// add active listening data
@@ -903,8 +913,8 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 				int newActivityType = cell.getActivityType();
 				long newActivityParam = cell.getActivityParam();
 				if(newActivityType == Cell.ACTIVITY_TYPE_ABRAKADABRA) {
-					if (musicSlidesIds.containsKey(newActivityParam)) {
-						newActivityParam = musicSlidesIds.get(newActivityParam);
+					if (abrakadabraIds.containsKey(newActivityParam)) {
+						newActivityParam = abrakadabraIds.get(newActivityParam);
 					} else {
 						newActivityType = Cell.ACTIVITY_TYPE_NONE;
 						newActivityParam = 0;
@@ -954,11 +964,11 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 		}
 		
 		// clear id maps (help gc)
-		musicSlidesIds.clear();
+		abrakadabraIds.clear();
 		activeListeningIds.clear();
 		videoPlaylistIds.clear();
 		chessboardIds.clear();
-		musicSlidesIds = null;
+		abrakadabraIds = null;
 		activeListeningIds = null;
 		videoPlaylistIds = null;
 		chessboardIds = null;

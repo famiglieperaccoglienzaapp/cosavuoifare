@@ -10,39 +10,39 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.whatdoyouwanttodo.R;
-import com.whatdoyouwanttodo.application.MusicSlides;
+import com.whatdoyouwanttodo.application.Abrakadabra;
 import com.whatdoyouwanttodo.db.ChessboardDbUtility;
-import com.whatdoyouwanttodo.db.MusicSlidesCursor;
+import com.whatdoyouwanttodo.db.AbrakadabraCursor;
 import com.whatdoyouwanttodo.settings.Constants;
 import com.whatdoyouwanttodo.ui.MessageDialog;
 
 /**
- * Attivita' di configurazione per una playlist di immagini
+ * Attivita' di configurazione per un'attivita' di tipo abrakadabra
  */
-public class MusicSlidesConfigActivity extends ActionBarActivity {	
+public class AbrakadabraConfigActivity extends ActionBarActivity {	
 	public static final long NO_ID = -1;
 	
-	public static MusicSlidesReturn ret = null;
+	public static AbrakadabraReturn ret = null;
 	
-	private MusicSlidesConfigFragment configFragment;
+	private AbrakadabraConfigFragment configFragment;
 
 	public static Intent getStartIntent(Activity caller, long id) {
-		Intent intent = new Intent(caller, MusicSlidesConfigActivity.class);
+		Intent intent = new Intent(caller, AbrakadabraConfigActivity.class);
 		if(id == NO_ID) {
-			ret = new MusicSlidesReturn(caller);
+			ret = new AbrakadabraReturn(caller);
 		} else {
-			MusicSlides musicSlides = null;
+			Abrakadabra abrakadabra = null;
 			
 			ChessboardDbUtility dbu = new ChessboardDbUtility(caller);
 			dbu.openReadable();
-			MusicSlidesCursor cursor = dbu.getCursorOnMusicSlides(id);
+			AbrakadabraCursor cursor = dbu.getCursorOnAbrakadabra(id);
 			while(cursor.moveToNext()) {
-				musicSlides = cursor.getMusicSlides();
+				abrakadabra = cursor.getAbrakadabra();
 			}
 			cursor.close();
 			dbu.close();
 			
-			ret = new MusicSlidesReturn(musicSlides);
+			ret = new AbrakadabraReturn(abrakadabra);
 		}
 		
 		return intent;
@@ -54,33 +54,39 @@ public class MusicSlidesConfigActivity extends ActionBarActivity {
 		return true;
 	}
 
-	public static MusicSlidesReturn getReturnParams() {
-		MusicSlidesReturn clone = ret.clone();
+	public static AbrakadabraReturn getReturnParams() {
+		AbrakadabraReturn clone = ret.clone();
 		ret = null;
 		return clone;
 	}
 
-	public static class MusicSlidesReturn implements Cloneable {
+	public static class AbrakadabraReturn implements Cloneable {
 		private long id;
 		private String name;
 		String[] imagePaths;
+		String soundPath;
 		String musicPath;
+		int imageEffect;
 
-		public MusicSlidesReturn(Context context) {
+		public AbrakadabraReturn(Context context) {
 			id = -1;
 			name = Constants.getInstance(context).NEW_MUSIC_SLIDES.getName();
 			imagePaths = Constants.getInstance(context).NEW_MUSIC_SLIDES.getImagePaths();
+			soundPath = Constants.getInstance(context).NEW_MUSIC_SLIDES.getSoundPath();
 			musicPath = Constants.getInstance(context).NEW_MUSIC_SLIDES.getMusicPath();
+			imageEffect = Constants.getInstance(context).NEW_MUSIC_SLIDES.getImageEffect();
 		}
 
-		public MusicSlidesReturn(MusicSlides musicSlides) {
-			id = musicSlides.getId();
-			name = musicSlides.getName();
-			imagePaths = musicSlides.getImagePaths();
-			musicPath = musicSlides.getMusicPath();
+		public AbrakadabraReturn(Abrakadabra abrakadabra) {
+			id = abrakadabra.getId();
+			name = abrakadabra.getName();
+			imagePaths = abrakadabra.getImagePaths();
+			soundPath = abrakadabra.getSoundPath();
+			musicPath = abrakadabra.getMusicPath();
+			imageEffect = abrakadabra.getImageEffect();
 		}
 
-		private MusicSlidesReturn() {
+		private AbrakadabraReturn() {
 			// do nothing (for clone)
 		}
 
@@ -108,6 +114,14 @@ public class MusicSlidesConfigActivity extends ActionBarActivity {
 			this.imagePaths = imagePaths;
 		}
 
+		public String getSoundPath() {
+			return soundPath;
+		}
+
+		public void setSoundPath(String soundPath) {
+			this.soundPath = soundPath;
+		}
+
 		public String getMusicPath() {
 			return musicPath;
 		}
@@ -116,16 +130,26 @@ public class MusicSlidesConfigActivity extends ActionBarActivity {
 			this.musicPath = musicPath;
 		}
 
+		public int getImageEffect() {
+			return imageEffect;
+		}
+
+		public void setImageEffect(int imageEffect) {
+			this.imageEffect = imageEffect;
+		}
+
 		@Override
-		public MusicSlidesReturn clone() {
-			MusicSlidesReturn ret = new MusicSlidesReturn();
+		public AbrakadabraReturn clone() {
+			AbrakadabraReturn ret = new AbrakadabraReturn();
 			ret.id = id;
 			ret.name = name;
 			ret.imagePaths = new String[imagePaths.length];
 			for(int i = 0; i < imagePaths.length; i++) {
 				ret.imagePaths[i] = imagePaths[i];
 			}
+			ret.soundPath = soundPath;
 			ret.musicPath = musicPath;
+			ret.imageEffect = imageEffect;
 			return ret;
 		}
 	}
@@ -134,9 +158,9 @@ public class MusicSlidesConfigActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.activity_music_slides_config);
+		setContentView(R.layout.activity_abrakadabra_config);
 		
-		configFragment = new MusicSlidesConfigFragment();
+		configFragment = new AbrakadabraConfigFragment();
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, configFragment).commit();
@@ -145,8 +169,7 @@ public class MusicSlidesConfigActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.music_slides_config, menu);
+		getMenuInflater().inflate(R.menu.abrakadabra_config, menu);
 		return true;
 	}
 
@@ -165,9 +188,9 @@ public class MusicSlidesConfigActivity extends ActionBarActivity {
 				finish();
 			} else {
 				Resources res = getResources();
-			    String title = res.getString(R.string.activity_music_slides_config_warning);
-			    String message = res.getString(R.string.activity_music_slides_config_warning_message);
-			    String confirm = res.getString(R.string.activity_music_slides_config_warning_confirm);
+			    String title = res.getString(R.string.activity_abrakadabra_config_warning);
+			    String message = res.getString(R.string.activity_abrakadabra_config_warning_message);
+			    String confirm = res.getString(R.string.activity_abrakadabra_config_warning_confirm);
 				MessageDialog.showMessage(this, title, message, confirm);
 			}
 			return true;
@@ -175,7 +198,7 @@ public class MusicSlidesConfigActivity extends ActionBarActivity {
 		/* else if (id == R.id.action_preview_content) {
 			// show preview
 			if (ret.imagePaths.length > 0 && ret.name.length() > 0) {
-				Intent intent = MusicSlidesActivity.getStartIntentWithParams(
+				Intent intent = AbrakadabraActivity.getStartIntentWithParams(
 						this, ret.getImagePaths(), ret.getMusicPath());
 				startActivity(intent);
 			} else {
@@ -199,11 +222,11 @@ public class MusicSlidesConfigActivity extends ActionBarActivity {
 	private void saveConfig() {
 		ChessboardDbUtility dbu = new ChessboardDbUtility(this);
 		dbu.openWritable();
-		
+
 		// save music slides
-		long id = dbu.addMusicSlides(ret.name, ret.musicPath, ret.imagePaths);
+		long id = dbu.addAbrakadabra(ret.name, ret.imagePaths, ret.soundPath, ret.musicPath, ret.imageEffect);
 		ret.id = id;
-		
+
 		dbu.close();
 	}
 

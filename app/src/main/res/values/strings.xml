@@ -86,7 +86,7 @@
     <string name="activity_cell_grid_config_action_name_separator">oppure</string>
     <string name="activity_cell_grid_config_action_name_activity">Other activities</string>
     <string name="activity_cell_grid_config_action_link_to">Link to board</string>
-    <string name="activity_cell_grid_config_action_music_slides">Image Playlist</string>
+    <string name="activity_cell_grid_config_action_music_slides">Image Construction</string>
     <string name="activity_cell_grid_config_action_active_listening">Active Listening</string>
     <string name="activity_cell_grid_config_action_play_video">Video Playlist</string>
     <string name="activity_cell_grid_config_choose_image">Choose Image</string>
@@ -95,7 +95,7 @@
     <string name="activity_cell_grid_config_tts_message">Write Text To Speech</string>
     <string name="activity_cell_grid_config_tts_message_confirm">OK</string>
     <string name="activity_cell_grid_config_tts_alternative">Or</string>
-    <string name="activity_cell_grid_config_tts_message_back">Back</string>C
+    <string name="activity_cell_grid_config_tts_message_back">Back</string>
     <string name="activity_cell_grid_config_tts_message_select_audio">Select or Record an Audio File</string>
     <string name="activity_cell_grid_config_override_message1">Link to ### will be replaced</string>
     <string name="activity_cell_grid_config_override_message2">Activity ### will be replaced</string>
@@ -112,8 +112,7 @@
     <string name="activity_all_grid_view_new_table_back">Back</string>
 
     <!-- Music Slides Activity -->
-    <string name="activity_music_slides_title">Music</string>
-    <string name="activity_active_listening_press_again">Press Again</string>
+    <string name="activity_abrakadabra_title">Image Construction</string>
 
     <!-- Active Listening Activity -->
     <string name="title_activity_active_listening">Active Listening</string>
@@ -123,19 +122,29 @@
     <string name="activity_video_view_dafault">Video</string>
 
     <!-- Music Slides Config Activity -->
-    <string name="activity_music_slides_config_title">Configure Music Playlist</string>
-    <string name="activity_music_slides_config_name">Name</string>
-    <string name="activity_music_slides_config_music">Background Music</string>
-    <string name="activity_music_slides_config_music_button">Music</string>
-    <string name="activity_music_slides_config_images">Playlist Images</string>
-    <string name="activity_music_slides_config_name_default">Write Here</string>
-    <string name="activity_music_slides_config_default">New Image</string>
-    <string name="activity_music_slides_config_preview">Preview</string>
-    <string name="activity_music_slides_config_preview_button">Preview</string>
-    <string name="activity_music_slides_config_new_image">New Image</string>
-    <string name="activity_music_slides_config_warning">Warning</string>
-    <string name="activity_music_slides_config_warning_message">enter the name and at least one image</string>
-    <string name="activity_music_slides_config_warning_confirm">OK</string>
+    <string name="activity_abrakadabra_config_title">Configure Image Constructor</string>
+    <string name="activity_abrakadabra_config_name">Name</string>
+    <string name="activity_abrakadabra_config_image_construction">Image Construction</string>
+    <string name="activity_abrakadabra_config_final_animation">Animation</string>
+    <string name="activity_abrakadabra_config_music">Background Music</string>
+    <string name="activity_abrakadabra_config_sound">Transition Sound</string>
+    <string name="activity_abrakadabra_config_sound_button">Sound</string>
+    <string name="activity_abrakadabra_config_music_button">Music</string>
+    <string name="activity_abrakadabra_config_images">Playlist Images</string>
+    <string name="activity_abrakadabra_config_name_default">Write Here</string>
+    <string name="activity_abrakadabra_config_default">New Image</string>
+    <string name="activity_abrakadabra_config_preview">Preview</string>
+    <string name="activity_abrakadabra_config_preview_button">Preview</string>
+    <string name="activity_abrakadabra_config_new_image">New Image</string>
+    <string name="activity_abrakadabra_config_image_effect">Image Effect</string>
+    <string name="activity_abrakadabra_config_warning">Warning</string>
+    <string name="activity_abrakadabra_config_warning_message">enter the name and at least one image</string>
+    <string name="activity_abrakadabra_config_warning_confirm">OK</string>
+
+    <string-array name="activity_abrakadabra_config_image_effect">
+        <item>Nothing</item>
+        <item>Ken Burns</item>
+    </string-array>
 
     <!-- Active Listening Config Activity -->
     <string name="activity_active_listening_config_title">Configure Active Listening</string>
@@ -275,7 +284,7 @@
     <string name="constant_new_table">New Communication Board</string>
     <string name="constant_back_table_name">Previous Communication Board</string>
     <string name="constant_new_active_listening">New Active Listening</string>
-    <string name="constant_new_image_playlist">New Image Playlist</string>
+    <string name="constant_new_image_playlist">New Image Construction</string>
     <string name="constant_new_video_playlist">New Video Playlist</string>
     <string name="constant_dir_name">WhatDoYouWantToDo</string>
     <string name="constant_export_dir_name">Export</string>
@@ -302,7 +311,7 @@
     <!-- Initial Configuration -->
     <string name="fc_menu">Menu</string>
     <string name="fc_stop">Stop</string>
-    <string name="fc_afraid_slides">Afraid Man (Slides)</string>
+    <string name="fc_train_slides">Train</string>
     <string name="fc_hachiko">Be Happy</string>
     <string name="fc_as_colorful_as_ever">Kalimba</string>
     <string name="fc_germany_vs_brasil">Germany vs. Brasil</string>
@@ -368,9 +377,7 @@
     <string name="fc_cake">Cake</string>
     <string name="fc_video1">Esempio 1</string>
     <string name="fc_video2">Esempio 2</string>
-    <string name="title_activity_long_operation">LongOperationActivity</string>
     <string name="fc_lychee">Lychee</string>
-    <string name="hello_world">Hello world!</string>
 
     <!-- First Start Wizard -->
     <string name="fs_start">starting</string>
@@ -381,4 +388,5 @@
     <string name="fs_create_file">"Render "</string>
     <string name="fs_create_symbol_set">Extracting Mulberry Symbol Set</string>
     <string name="fs_copy_symbol">"Extract "</string>
+
 </resources>

@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_config_space_large"
     android:paddingRight="@dimen/activity_config_space_large"
     android:paddingTop="@dimen/activity_config_space_large"
-    tools:context="com.whatdoyouwanttodo.config.MusicSlidesConfigActivity"
+    tools:context="com.whatdoyouwanttodo.config.AbrakadabraConfigActivity"
     tools:ignore="MergeRootFrame" >
 
     <ScrollView
