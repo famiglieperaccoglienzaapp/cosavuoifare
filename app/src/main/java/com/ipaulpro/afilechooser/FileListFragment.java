@@ -26,8 +26,10 @@ import android.view.View;
 import android.widget.ListView;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.util.List;
 
+import com.ipaulpro.afilechooser.utils.FileUtils;
 import com.whatdoyouwanttodo.R;
 
 /**
@@ -55,6 +57,7 @@ public class FileListFragment extends ListFragment implements
 
     private FileListAdapter mAdapter;
     private String mPath;
+    private FileFilter mFileFilter;
 
     private Callbacks mListener;
 
@@ -64,10 +67,11 @@ public class FileListFragment extends ListFragment implements
      * @param path The absolute path of the file (directory) to display.
      * @return A new Fragment with the given file path.
      */
-    public static FileListFragment newInstance(String path) {
+    public static FileListFragment newInstance(String path, int fileType) {
         FileListFragment fragment = new FileListFragment();
         Bundle args = new Bundle();
         args.putString(FileChooserActivity.PATH, path);
+        args.putInt(FileChooserActivity.FILE_TYPE, fileType);
         fragment.setArguments(args);
 
         return fragment;
@@ -93,6 +97,18 @@ public class FileListFragment extends ListFragment implements
         mPath = getArguments() != null ? getArguments().getString(
                 FileChooserActivity.PATH) : Environment
                 .getExternalStorageDirectory().getAbsolutePath();
+        int fileType = getArguments().getInt(FileChooserActivity.FILE_TYPE);
+        if(fileType == FileChooserActivity.FILE_TYPE_ALL) {
+            mFileFilter = FileUtils.sFileFilter;
+        } else if(fileType == FileChooserActivity.FILE_TYPE_ZIP) {
+            mFileFilter = FileUtils.sFileFilterZip;
+        } else if(fileType == FileChooserActivity.FILE_TYPE_AUDIO) {
+            mFileFilter = FileUtils.sFileFilterAudio;
+        } else if(fileType == FileChooserActivity.FILE_TYPE_IMAGE) {
+            mFileFilter = FileUtils.sFileFilterImage;
+        } else if(fileType == FileChooserActivity.FILE_TYPE_VIDEO) {
+            mFileFilter = FileUtils.sFileFilterVideo;
+        }
     }
 
     @Override
@@ -118,7 +134,7 @@ public class FileListFragment extends ListFragment implements
 
     @Override
     public Loader<List<File>> onCreateLoader(int id, Bundle args) {
-        return new FileLoader(getActivity(), mPath);
+        return new FileLoader(getActivity(), mPath, mFileFilter);
     }
 
     @Override

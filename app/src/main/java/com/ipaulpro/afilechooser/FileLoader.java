@@ -23,6 +23,7 @@ import android.support.v4.content.AsyncTaskLoader;
 import com.ipaulpro.afilechooser.utils.FileUtils;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,10 +45,12 @@ public class FileLoader extends AsyncTaskLoader<List<File>> {
 
 	private List<File> mData;
 	private String mPath;
+	private FileFilter mFileFilter;
 
-	public FileLoader(Context context, String path) {
+	public FileLoader(Context context, String path, FileFilter fileFilter) {
 		super(context);
 		this.mPath = path;
+		this.mFileFilter = fileFilter;
 	}
 
 	@Override
@@ -69,7 +72,7 @@ public class FileLoader extends AsyncTaskLoader<List<File>> {
         }
 
         // List file in this directory with the file filter
-        final File[] files = pathDir.listFiles(FileUtils.sFileFilter);
+        final File[] files = pathDir.listFiles(mFileFilter);
         if (files != null) {
             // Sort the files alphabetically
             Arrays.sort(files, FileUtils.sComparator);

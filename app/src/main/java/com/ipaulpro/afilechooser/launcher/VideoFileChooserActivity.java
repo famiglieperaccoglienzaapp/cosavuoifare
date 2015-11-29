@@ -1,20 +1,4 @@
-/*
- * Copyright (C) 2013 Paul Burke
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package com.ipaulpro.afilechooser;
+package com.ipaulpro.afilechooser.launcher;
 
 import android.app.ActionBar;
 import android.content.BroadcastReceiver;
@@ -27,25 +11,18 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentManager.BackStackEntry;
-import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.ipaulpro.afilechooser.FileListFragment;
 import com.whatdoyouwanttodo.R;
 
 import java.io.File;
 
-/**
- * Main Activity that handles the FileListFragments
- *
- * @version 2013-06-25
- * @author paulburke (ipaulpro)
- */
-public class FileChooserActivity extends FragmentActivity implements
-        OnBackStackChangedListener, FileListFragment.Callbacks {
+public class VideoFileChooserActivity extends FragmentActivity implements
+        FragmentManager.OnBackStackChangedListener, FileListFragment.Callbacks {
 
     public static final String PATH = "path";
     public static final String FILE_TYPE = "file_type";
@@ -85,7 +62,7 @@ public class FileChooserActivity extends FragmentActivity implements
         } else {
             mPath = savedInstanceState.getString(PATH);
         }
-        mFileType = FILE_TYPE_ALL;
+        mFileType = FILE_TYPE_VIDEO;
 
         setTitle(mPath);
     }
@@ -116,7 +93,7 @@ public class FileChooserActivity extends FragmentActivity implements
 
         int count = mFragmentManager.getBackStackEntryCount();
         if (count > 0) {
-            BackStackEntry fragment = mFragmentManager.getBackStackEntryAt(count - 1);
+            FragmentManager.BackStackEntry fragment = mFragmentManager.getBackStackEntryAt(count - 1);
             mPath = fragment.getName();
         } else {
             mPath = EXTERNAL_BASE_PATH;
@@ -206,7 +183,7 @@ public class FileChooserActivity extends FragmentActivity implements
                 finishWithResult(file);
             }
         } else {
-            Toast.makeText(FileChooserActivity.this, R.string.error_selecting_file,
+            Toast.makeText(VideoFileChooserActivity.this, R.string.error_selecting_file,
                     Toast.LENGTH_SHORT).show();
         }
     }

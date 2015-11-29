@@ -496,6 +496,63 @@ public class FileUtils {
         }
     };
 
+    public static FileFilter sFileFilterZip = new FileFilter() {
+        @Override
+        public boolean accept(File file) {
+            final String fileName = file.getName();
+            // Return files only (not directories) and skip hidden files
+            return file.isFile()
+                    && !fileName.startsWith(HIDDEN_PREFIX)
+                    && fileName.endsWith(".zip");
+        }
+    };
+
+    public static FileFilter sFileFilterAudio = new FileFilter() {
+        @Override
+        public boolean accept(File file) {
+            final String fileName = file.getName();
+            // Return files only (not directories) and skip hidden files
+            return file.isFile()
+                    && !fileName.startsWith(HIDDEN_PREFIX)
+                    && fileName.endsWith(".mp3")
+                    && fileName.endsWith(".ogg")
+                    && fileName.endsWith(".wav")
+                    && fileName.endsWith(".3gp")
+                    && fileName.endsWith(".mp4")
+                    && fileName.endsWith(".m4a")
+                    && fileName.endsWith(".aac")
+                    && fileName.endsWith(".flac");
+        }
+    };
+
+    public static FileFilter sFileFilterVideo = new FileFilter() {
+        @Override
+        public boolean accept(File file) {
+            final String fileName = file.getName();
+            // Return files only (not directories) and skip hidden files
+            return file.isFile()
+                    && !fileName.startsWith(HIDDEN_PREFIX)
+                    && fileName.endsWith(".3gp")
+                    && fileName.endsWith(".mp4")
+                    && fileName.endsWith(".webm");
+        }
+    };
+
+    public static FileFilter sFileFilterImage = new FileFilter() {
+        @Override
+        public boolean accept(File file) {
+            final String fileName = file.getName();
+            // Return files only (not directories) and skip hidden files
+            return file.isFile()
+                    && !fileName.startsWith(HIDDEN_PREFIX)
+                    && fileName.endsWith(".jpg")
+                    && fileName.endsWith(".git")
+                    && fileName.endsWith(".png")
+                    && fileName.endsWith(".bmp")
+                    && fileName.endsWith(".webp");
+        }
+    };
+
     /**
      * Folder (directories) filter.
      *
