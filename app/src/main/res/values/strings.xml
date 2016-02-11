@@ -378,6 +378,7 @@
     <string name="fc_video1">Esempio 1</string>
     <string name="fc_video2">Esempio 2</string>
     <string name="fc_lychee">Lychee</string>
+    <string name="title_activity_long_operation">LongOperationActivity</string>
 
     <!-- First Start Wizard -->
     <string name="fs_start">starting</string>
