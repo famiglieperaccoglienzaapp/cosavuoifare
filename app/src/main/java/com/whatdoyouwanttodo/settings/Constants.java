@@ -39,7 +39,7 @@ public final class Constants {
 
 		String newImagePlaylistStr = res.getString(R.string.constant_new_image_playlist);
 		NEW_MUSIC_SLIDES = new Abrakadabra(0, newImagePlaylistStr,
-				new String[0], "", "", Abrakadabra.EFFECT_NO_EFFECT);
+				new String[0], "", "", 15, Abrakadabra.EFFECT_NO_EFFECT);
 
 		String newVideoPlaylistStr = res.getString(R.string.constant_new_video_playlist);
 		NEW_VIDEO_PLAYLIST = new VideoPlaylist(0, newVideoPlaylistStr,

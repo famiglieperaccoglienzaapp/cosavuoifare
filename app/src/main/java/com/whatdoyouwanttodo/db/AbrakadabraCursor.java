@@ -53,6 +53,8 @@ public class AbrakadabraCursor {
 				cursor.getColumnIndex(AbrakadabraEntry.COLUMN_NAME_SOUND_PATH));
 		String musicPath = cursor.getString(
 				cursor.getColumnIndex(AbrakadabraEntry.COLUMN_NAME_MUSIC_PATH));
+		int musicDurationTimePath = cursor.getInt(
+				cursor.getColumnIndex(AbrakadabraEntry.COLUMN_NAME_MUSIC_DURATION_TIME));
 		int imageEffect = cursor.getInt(
 				cursor.getColumnIndex(AbrakadabraEntry.COLUMN_NAME_IMAGE_EFFECT));
 		
@@ -87,7 +89,7 @@ public class AbrakadabraCursor {
 			imagePathOrdered[i] = imagePaths.get(i).imagePath;
 		}
 		
-		return new Abrakadabra(id, name, imagePathOrdered, soundPath, musicPath, imageEffect);
+		return new Abrakadabra(id, name, imagePathOrdered, soundPath, musicPath, musicDurationTimePath, imageEffect);
 	}
 
 	public void close() {

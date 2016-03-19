@@ -424,6 +424,7 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 					String mSound = ak.getSoundPath();
 					String mMusic = ak.getMusicPath();
 					int mImageEffect = ak.getImageEffect();
+					int mAudioDuration = ak.getMusicDurationTime();
 					
 					mSound = putExternalFile(mSound);
 					mMusic = putExternalFile(mMusic);
@@ -439,6 +440,7 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 					xmlSerializer.attribute("", "images", sb.toString());
 					xmlSerializer.attribute("", "sound", mSound);
 					xmlSerializer.attribute("", "audio", mMusic);
+					xmlSerializer.attribute("", "audioduration", Integer.toString(mAudioDuration));
 					xmlSerializer.attribute("", "imageeffect", Integer.toString(mImageEffect));
 
 					xmlSerializer.endTag("", "abrakadabra");
@@ -740,13 +742,14 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 				String[] mImages = xmlParser.getAttributeValue(null, "images").split(";");
 				String mSound = xmlParser.getAttributeValue(null, "sound");
 				String mMusic = xmlParser.getAttributeValue(null, "audio");
+				int mMusicDurationTime = Integer.parseInt(xmlParser.getAttributeValue(null, "audioduration"));
 				int mImageEffect = Integer.parseInt(xmlParser.getAttributeValue(null, "imageeffect"));
 
 				mImages = getExternalFile(mImages);
 				mSound = getExternalFile(mSound);
 				mMusic = getExternalFile(mMusic);
 				
-				Abrakadabra ms = new Abrakadabra(mId, mName, mImages, mSound, mMusic, mImageEffect);
+				Abrakadabra ms = new Abrakadabra(mId, mName, mImages, mSound, mMusic, mMusicDurationTime, mImageEffect);
 				abrakadabra.add(ms);
 				
 				cTag = xmlParser.nextTag();
@@ -849,6 +852,7 @@ public class ChooseDestinationActivity extends ActionBarActivity {
 					ms.getImagePaths(),
 					ms.getSoundPath(),
 					ms.getMusicPath(),
+					ms.getMusicDurationTime(),
 					ms.getImageEffect());
 		
 			abrakadabraIds.put(ms.getId(), newId);

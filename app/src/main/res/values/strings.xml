@@ -127,6 +127,7 @@
     <string name="activity_abrakadabra_config_image_construction">Image Construction</string>
     <string name="activity_abrakadabra_config_final_animation">Animation</string>
     <string name="activity_abrakadabra_config_music">Background Music</string>
+    <string name="activity_abrakadabra_config_music_duration">Stop music at</string>
     <string name="activity_abrakadabra_config_sound">Transition Sound</string>
     <string name="activity_abrakadabra_config_sound_button">Sound</string>
     <string name="activity_abrakadabra_config_music_button">Music</string>

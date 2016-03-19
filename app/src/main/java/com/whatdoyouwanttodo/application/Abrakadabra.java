@@ -17,14 +17,16 @@ public class Abrakadabra implements Parcelable, Cloneable {
 	private String[] imagePaths;
 	private String soundPath;
 	private String musicPath;
+	private int musicDurationTime;
 	private int imageEffect;
 
-	public Abrakadabra(long id, String name, String[] imagePaths, String soundPath, String musicPath, int imageEffect) {
+	public Abrakadabra(long id, String name, String[] imagePaths, String soundPath, String musicPath, int musicDurationTime, int imageEffect) {
 		this.id = id;
 		this.name = name;
 		this.imagePaths = imagePaths;
 		this.soundPath = soundPath;
 		this.musicPath = musicPath;
+		this.musicDurationTime = musicDurationTime;
 		this.imageEffect = imageEffect;
 	}
 
@@ -68,6 +70,14 @@ public class Abrakadabra implements Parcelable, Cloneable {
 		this.musicPath = musicPath;
 	}
 
+	public int getMusicDurationTime() {
+		return musicDurationTime;
+	}
+
+	public void setMusicDurationTime(int musicDurationTime) {
+		this.musicDurationTime = musicDurationTime;
+	}
+
 	public int getImageEffect() {
 		return imageEffect;
 	}
@@ -88,6 +98,7 @@ public class Abrakadabra implements Parcelable, Cloneable {
 		dest.writeStringArray(imagePaths);
 		dest.writeString(soundPath);
 		dest.writeString(musicPath);
+		dest.writeInt(musicDurationTime);
 		dest.writeInt(imageEffect);
 	}
 
@@ -100,8 +111,9 @@ public class Abrakadabra implements Parcelable, Cloneable {
 			source.readStringArray(imagePaths);
 			String soundPath = source.readString();
 			String musicPath = source.readString();
+			int musicDurationTime = source.readInt();
 			int imageEffect = source.readInt();
-			return new Abrakadabra(id, name, imagePaths, soundPath, musicPath, imageEffect);
+			return new Abrakadabra(id, name, imagePaths, soundPath, musicPath, musicDurationTime, imageEffect);
 		}
 
 		@Override
@@ -116,19 +128,20 @@ public class Abrakadabra implements Parcelable, Cloneable {
 		this.imagePaths = adapted.imagePaths.clone();
 		this.soundPath = adapted.soundPath;
 		this.musicPath = adapted.musicPath;
+		this.musicDurationTime = adapted.musicDurationTime;
 		this.imageEffect = adapted.imageEffect;
 	}
 
 	@Override
 	public Abrakadabra clone() {
-		return new Abrakadabra(id, name, imagePaths, soundPath, musicPath, imageEffect);
+		return new Abrakadabra(id, name, imagePaths, soundPath, musicPath, musicDurationTime, imageEffect);
 	}
 
 	@Override
 	public String toString() {
 		return "Abrakadabra [id=" + id + ", name=" + name + ", imagePaths="
 				+ Arrays.toString(imagePaths) + ", soundPath=" + soundPath
-				+ ", musicPath=" + musicPath + ", imageEffect=" + imageEffect
+				+ ", musicPath=" + musicPath + ", musicDurationTime=" + musicDurationTime + ", imageEffect=" + imageEffect
 				+ "]";
 	}
 }

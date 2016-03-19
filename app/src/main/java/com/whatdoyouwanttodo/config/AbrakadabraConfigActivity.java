@@ -66,6 +66,7 @@ public class AbrakadabraConfigActivity extends ActionBarActivity {
 		String[] imagePaths;
 		String soundPath;
 		String musicPath;
+		int musicDurationTime;
 		int imageEffect;
 
 		public AbrakadabraReturn(Context context) {
@@ -74,6 +75,7 @@ public class AbrakadabraConfigActivity extends ActionBarActivity {
 			imagePaths = Constants.getInstance(context).NEW_MUSIC_SLIDES.getImagePaths();
 			soundPath = Constants.getInstance(context).NEW_MUSIC_SLIDES.getSoundPath();
 			musicPath = Constants.getInstance(context).NEW_MUSIC_SLIDES.getMusicPath();
+			musicDurationTime = Constants.getInstance(context).NEW_MUSIC_SLIDES.getMusicDurationTime();
 			imageEffect = Constants.getInstance(context).NEW_MUSIC_SLIDES.getImageEffect();
 		}
 
@@ -83,6 +85,7 @@ public class AbrakadabraConfigActivity extends ActionBarActivity {
 			imagePaths = abrakadabra.getImagePaths();
 			soundPath = abrakadabra.getSoundPath();
 			musicPath = abrakadabra.getMusicPath();
+			musicDurationTime = abrakadabra.getMusicDurationTime();
 			imageEffect = abrakadabra.getImageEffect();
 		}
 
@@ -130,6 +133,14 @@ public class AbrakadabraConfigActivity extends ActionBarActivity {
 			this.musicPath = musicPath;
 		}
 
+		public int getMusicDurationTime() {
+			return musicDurationTime;
+		}
+
+		public void setMusicDurationTime(int musicDurationTime) {
+			this.musicDurationTime = musicDurationTime;
+		}
+
 		public int getImageEffect() {
 			return imageEffect;
 		}
@@ -149,6 +160,7 @@ public class AbrakadabraConfigActivity extends ActionBarActivity {
 			}
 			ret.soundPath = soundPath;
 			ret.musicPath = musicPath;
+			ret.musicDurationTime = musicDurationTime;
 			ret.imageEffect = imageEffect;
 			return ret;
 		}
@@ -224,7 +236,7 @@ public class AbrakadabraConfigActivity extends ActionBarActivity {
 		dbu.openWritable();
 
 		// save music slides
-		long id = dbu.addAbrakadabra(ret.name, ret.imagePaths, ret.soundPath, ret.musicPath, ret.imageEffect);
+		long id = dbu.addAbrakadabra(ret.name, ret.imagePaths, ret.soundPath, ret.musicPath, ret.musicDurationTime, ret.imageEffect);
 		ret.id = id;
 
 		dbu.close();

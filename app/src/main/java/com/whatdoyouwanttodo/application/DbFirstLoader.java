@@ -133,6 +133,7 @@ public class DbFirstLoader {
 						f(Constants.getInstance(context).FILE_DIR, "train6.png") },
 				f(Constants.getInstance(context).FILE_DIR, "drum.ogg"),
 				f(Constants.getInstance(context).FILE_DIR, "colorful.ogg"),
+				15,
 				Abrakadabra.EFFECT_KENBURNS);
 	
 		// add two active listening
@@ -495,9 +496,9 @@ public class DbFirstLoader {
 
 	private long addAbrakadabra(ChessboardDbUtility dbu, String name,
 			String[] imagePaths, String soundPath, String musicPath,
-			int imageEffect) {
+			int musicDurationTime, int imageEffect) {
 		return dbu.addAbrakadabra(name, imagePaths, soundPath, musicPath,
-				imageEffect);
+				musicDurationTime, imageEffect);
 	}
 
 	private long addActiveListening(ChessboardDbUtility dbu, String name,

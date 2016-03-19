@@ -22,6 +22,9 @@ import com.whatdoyouwanttodo.utils.ActivityUtils;
 import com.whatdoyouwanttodo.utils.FileUtils;
 import com.whatdoyouwanttodo.utils.ImageLoader;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Rappresenta una attivita' che riproduce una sequenza di immagini che avanza al
  * tap emettendo un suono.
@@ -33,6 +36,7 @@ public class AbrakadabraActivity extends FragmentActivity {
 	private static final String IMAGE_PATHS = "com.whatdoyouwanttodo.AbrakadabraActivity.IMAGE_PATHS";
 	private static final String SOUND_PATH = "com.whatdoyouwanttodo.AbrakadabraActivity.SOUND_PATH";
 	private static final String MUSIC_PATH = "com.whatdoyouwanttodo.AbrakadabraActivity.MUSIC_PATH";
+	private static final String MUSIC_DURATION_TIME = "com.whatdoyouwanttodo.AbrakadabraActivity.MUSIC_DURATION_TIME";
 	private static final String IMAGE_EFFECT = "com.whatdoyouwanttodo.AbrakadabraActivity.SOUND_PATH";
 	
 	private String[] imagePaths;
@@ -43,17 +47,19 @@ public class AbrakadabraActivity extends FragmentActivity {
 	private String soundPath;
 	private MediaPlayer soundPlayer = null;
 	private String musicPath;
+	private int musicDurationTime;
 	private MediaPlayer musicPlayer = null;
 	
 	// back button
 	private Button backButton;
 	private Handler backButtonWaitHandler = null;
 
-	public static Intent getStartIntentWithParams(Activity caller, String[] imagePaths, String soundPath, String musicPath, int imageEffect) {
+	public static Intent getStartIntentWithParams(Activity caller, String[] imagePaths, String soundPath, String musicPath, int musicDurationTime, int imageEffect) {
 		Intent intent = new Intent(caller, AbrakadabraActivity.class);
 		intent.putExtra(IMAGE_PATHS, imagePaths);
 		intent.putExtra(SOUND_PATH, soundPath);
 		intent.putExtra(MUSIC_PATH, musicPath);
+		intent.putExtra(MUSIC_DURATION_TIME, musicDurationTime);
 		intent.putExtra(IMAGE_EFFECT, imageEffect);
 		return intent;
 	}
@@ -97,6 +103,7 @@ public class AbrakadabraActivity extends FragmentActivity {
 			imagePaths = abrakadabra.getImagePaths();
 			soundPath = abrakadabra.getSoundPath();
 			musicPath = abrakadabra.getMusicPath();
+			musicDurationTime = abrakadabra.getMusicDurationTime();
 			imageEffect = abrakadabra.getImageEffect();
 			
 			dbu.close();
@@ -104,6 +111,7 @@ public class AbrakadabraActivity extends FragmentActivity {
 			imagePaths = intent.getStringArrayExtra(IMAGE_PATHS);
 			soundPath = intent.getStringExtra(SOUND_PATH);
 			musicPath = intent.getStringExtra(MUSIC_PATH);
+			musicDurationTime = intent.getIntExtra(MUSIC_DURATION_TIME, 15);
 			imageEffect = intent.getIntExtra(IMAGE_EFFECT, Abrakadabra.EFFECT_NO_EFFECT);
 		}
 		
@@ -163,7 +171,7 @@ public class AbrakadabraActivity extends FragmentActivity {
 			}
 		}
 	};
-	
+
 	private OnClickListener imageClick = new OnClickListener() {
 		@Override
 		public void onClick(View view) {
@@ -198,12 +206,50 @@ public class AbrakadabraActivity extends FragmentActivity {
 				} else {
 					ImageLoader.getInstance().loadImage(image, imagePaths[imagePos]);
 				}
+
+				if(imagePos == (imagePaths.length - 1)) {
+					// wait n second to end
+					Handler waitHandler = new Handler();
+					waitHandler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							// fade out music 1 second
+							Timer timer = new Timer();
+							TimerTask timerTask = new FadeOutAndExitTimerTask();
+							timer.scheduleAtFixedRate(timerTask, 0, 100);
+						}
+					}, musicDurationTime * 1000);
+				}
 			} else {
-				finish();
+				return;
 			}
 			imagePos++;
 		}
 	};
+
+	class FadeOutAndExitTimerTask extends TimerTask {
+		private float volume;
+		private float speed;
+
+		public FadeOutAndExitTimerTask() {
+			volume = 1;
+			speed = 0.1f;
+		}
+
+		public void run() {
+			if (AbrakadabraActivity.this != null) {
+				musicPlayer.setVolume(volume, volume);
+				volume -= speed;
+				if (volume < 0.15f) {
+					this.cancel();
+					musicPlayer.stop();
+					finish();
+				}
+			} else {
+				this.cancel();
+			}
+		}
+	}
 	
 	@Override
 	public void onDestroy() {

@@ -117,11 +117,12 @@ public class ChessboardDbUtility {
 	}
 
 	public long addAbrakadabra(String name, String[] imagePaths,
-			String soundPath, String musicPath, int imageEffect) {
+			String soundPath, String musicPath, int musicDurationTime, int imageEffect) {
 		ContentValues clValues = new ContentValues();
 		clValues.put(AbrakadabraEntry.COLUMN_NAME_NAME, name);
 		clValues.put(AbrakadabraEntry.COLUMN_NAME_SOUND_PATH, soundPath);
 		clValues.put(AbrakadabraEntry.COLUMN_NAME_MUSIC_PATH, musicPath);
+		clValues.put(AbrakadabraEntry.COLUMN_NAME_MUSIC_DURATION_TIME, musicDurationTime);
 		clValues.put(AbrakadabraEntry.COLUMN_NAME_IMAGE_EFFECT, imageEffect);
 	    
 		long rowId =  db.insert(AbrakadabraEntry.TABLE_NAME, null, clValues);
@@ -337,6 +338,7 @@ public class ChessboardDbUtility {
 				AbrakadabraEntry.COLUMN_NAME_NAME,
 				AbrakadabraEntry.COLUMN_NAME_SOUND_PATH,
 				AbrakadabraEntry.COLUMN_NAME_MUSIC_PATH,
+				AbrakadabraEntry.COLUMN_NAME_MUSIC_DURATION_TIME,
 				AbrakadabraEntry.COLUMN_NAME_IMAGE_EFFECT };
 		
 		Cursor cursor = db.query(AbrakadabraEntry.TABLE_NAME, projection,

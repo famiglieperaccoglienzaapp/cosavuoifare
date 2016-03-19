@@ -41,6 +41,7 @@ public final class ChessboardDbContract {
         public static final String COLUMN_NAME_NAME = "name";
         public static final String COLUMN_NAME_SOUND_PATH = "sound_path";
         public static final String COLUMN_NAME_MUSIC_PATH = "music_path";
+        public static final String COLUMN_NAME_MUSIC_DURATION_TIME = "music_duration_time";
         public static final String COLUMN_NAME_IMAGE_EFFECT = "image_effect";
     }
     
@@ -122,6 +123,7 @@ public final class ChessboardDbContract {
             		AbrakadabraEntry.COLUMN_NAME_NAME + " TEXT," +
             		AbrakadabraEntry.COLUMN_NAME_SOUND_PATH + " TEXT," +
             		AbrakadabraEntry.COLUMN_NAME_MUSIC_PATH + " TEXT," +
+                    AbrakadabraEntry.COLUMN_NAME_MUSIC_DURATION_TIME + " INTEGER," +
             		AbrakadabraEntry.COLUMN_NAME_IMAGE_EFFECT + " INTEGER" +
             " )";
 

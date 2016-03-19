@@ -116,6 +116,7 @@
     <string name="activity_abrakadabra_config_sound_button">Suono</string>
     <string name="activity_abrakadabra_config_music">Musica</string>
     <string name="activity_abrakadabra_config_music_button">Musica</string>
+    <string name="activity_abrakadabra_config_music_duration">Durata Musica</string>
     <string name="activity_abrakadabra_config_images">Costruzione Immagini</string>
     <string name="activity_abrakadabra_config_name_default">Scrivi qui</string>
     <string name="activity_abrakadabra_config_default">Nuova Immagine</string>

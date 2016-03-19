@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
@@ -104,6 +105,24 @@ public class AbrakadabraConfigFragment extends Fragment {
 				IntentUtils.startSelectAudioIntent(getActivity(), INTENT_CHANGE_MUSIC);
 			}
 		});
+
+		// initialize music duration spinner
+		SeekBar musicDurationTime = (SeekBar) rootView.findViewById(R.id.music_duration_time);
+		int musicDurationTimeVal = AbrakadabraConfigActivity.ret.getMusicDurationTime();
+		musicDurationTime.setProgress(getMusicDurationSliderPos(musicDurationTimeVal));
+		musicDurationTime.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			int progressChanged = 0;
+
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+				progressChanged = progress;
+			}
+
+			public void onStartTrackingTouch(SeekBar seekBar) { }
+
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				AbrakadabraConfigActivity.ret.setMusicDurationTime(getMusicDurationSliderValue(progressChanged));
+			}
+		});
 		
 		// initialize play music button
 		ImageView playMusic = (ImageView) rootView.findViewById(R.id.preview_play_music);
@@ -188,6 +207,37 @@ public class AbrakadabraConfigFragment extends Fragment {
 		images.initAll(itemList);
 		
 		return rootView;
+	}
+
+
+	private int getMusicDurationSliderValue(int value) {
+		if (value == 0) {
+			return 5;
+		} else if (value == 1) {
+			return 10;
+		} else if (value == 2) {
+			return 15;
+		} else if (value == 3) {
+			return 30;
+		} else if (value == 4) {
+			return 60;
+		}
+		return -1;
+	}
+
+	private int getMusicDurationSliderPos(int value) {
+		if (value == 5) {
+			return 0;
+		} else if (value <= 10) {
+			return 1;
+		} else if (value <= 15) {
+			return 2;
+		} else if (value <= 30) {
+			return 3;
+		} else if (value <= 60) {
+			return 4;
+		}
+		return -1;
 	}
 	
 	@Override
