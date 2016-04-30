@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
@@ -53,7 +55,7 @@ import com.whatdoyouwanttodo.utils.ImageLoader;
 import com.whatdoyouwanttodo.utils.IntentUtils;
 
 /**
- * Attivit� che mostra la configurazione di una playlist di video
+ * Attivita' che mostra la configurazione di una playlist di video
  */
 public class VideoPlaylistConfigActivity extends ActionBarActivity {
 	public static final long NO_ID = -1;
@@ -250,7 +252,15 @@ public class VideoPlaylistConfigActivity extends ActionBarActivity {
 				} catch (Exception ex) {
 					// do nothing
 				}
-				String title = getTitle(videoId);
+
+				String title;
+				try {
+					title = new GetTitleTask().execute(videoId).get(); // getTitle(videoId);
+				} catch (InterruptedException ex) {
+					title = "";
+				} catch (ExecutionException ex) {
+					title = "";
+				}
 				
 				itemList[i] = new Item(title, picturePath, videoUrl[i]);
 			} else {
@@ -260,44 +270,48 @@ public class VideoPlaylistConfigActivity extends ActionBarActivity {
 		}
 		videoLayoutHelper.initAll(itemList);
 	}
-	
-	public String getTitle(String videoId) {
-		HttpTransport netHttpTransport = new NetHttpTransport();
-		JsonFactory gsonFactory = new GsonFactory();
-		HttpRequestInitializer httpRequestInitializer = new HttpRequestInitializer() {
-			public void initialize(HttpRequest request) throws IOException {
-			}
-		};
-		String appName = getResources().getString(R.string.app_name);
-		Builder youtubeBuilder = new Builder(netHttpTransport, gsonFactory, httpRequestInitializer);
-		youtubeBuilder.setApplicationName(appName);
-		YouTube youtube = youtubeBuilder.build();
-		Videos youtubeVideos = youtube.videos();
 
-		try {
-			YouTube.Videos.List videoDetails = youtubeVideos.list("snippet");
-			videoDetails.setKey(Configurations.BROWSER_KEY);
-			videoDetails.setId(videoId);
-			videoDetails.setMaxResults(1L);
+	class GetTitleTask extends AsyncTask<String, Void, String> {
+		protected String doInBackground(String... videoIdList) {
+			String videoId = videoIdList[0];
 
-			// do search
-			VideoListResponse videoResponse = videoDetails.execute();
-
-			List<Video> searchResultList = videoResponse.getItems();
-			if (searchResultList.size() == 0) {
-				return "Titolo non trovato";
-			} else {
-				Iterator<Video> it = searchResultList.iterator();
-				while (it.hasNext()) {
-					Video result = it.next();
-					return result.getSnippet().getTitle();
+			HttpTransport netHttpTransport = new NetHttpTransport();
+			JsonFactory gsonFactory = new GsonFactory();
+			HttpRequestInitializer httpRequestInitializer = new HttpRequestInitializer() {
+				public void initialize(HttpRequest request) throws IOException {
 				}
+			};
+			String appName = getResources().getString(R.string.app_name);
+			Builder youtubeBuilder = new Builder(netHttpTransport, gsonFactory, httpRequestInitializer);
+			youtubeBuilder.setApplicationName(appName);
+			YouTube youtube = youtubeBuilder.build();
+			Videos youtubeVideos = youtube.videos();
+
+			try {
+				YouTube.Videos.List videoDetails = youtubeVideos.list("snippet");
+				videoDetails.setKey(Configurations.BROWSER_KEY);
+				videoDetails.setId(videoId);
+				videoDetails.setMaxResults(1L);
+
+				// do search
+				VideoListResponse videoResponse = videoDetails.execute();
+
+				List<Video> searchResultList = videoResponse.getItems();
+				if (searchResultList.size() == 0) {
+					return "Titolo non trovato";
+				} else {
+					Iterator<Video> it = searchResultList.iterator();
+					while (it.hasNext()) {
+						Video result = it.next();
+						return result.getSnippet().getTitle();
+					}
+				}
+			} catch (IOException e) {
+				return "Errore nel recupero";
 			}
-		} catch (IOException e) {
-			return "Errore nel recupero";
+
+			return "";
 		}
-		
-		return "";
 	}
 
 	private class SelectVideoFromLocale implements

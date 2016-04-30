@@ -8,7 +8,6 @@ public final class Configurations {
 
 	public static final String IMAGE_BACK_NAME = "back";
 	public static final String IMAGE_NEW_NAME = "new";
-
 	public static final String BROWSER_KEY = "AIzaSyDdUwLyfnkHwtD-WBcS3D6dUnUCGhybgqI";
 
 	public static final String TTS_PREFIX = "tts:";

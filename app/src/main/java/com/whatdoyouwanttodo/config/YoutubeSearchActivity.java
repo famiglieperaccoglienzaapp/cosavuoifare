@@ -5,15 +5,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -161,78 +164,102 @@ public class YoutubeSearchActivity extends Activity {
 		youtube = youtubeBuilder.build();
 		youtubeSearch = youtube.search();
 	}
+
+	class SearchVideoTask extends AsyncTask<String, Void, List> {
+		protected List doInBackground(String... searchTextList) {
+			String searchText = searchTextList[0];
+
+			// prepare youtube search
+			YouTube.Search.List search;
+			try {
+				search = youtubeSearch.list("id,snippet");
+			} catch(IOException ex) {
+				return new ArrayList();
+			}
+			search.setKey(Configurations.BROWSER_KEY);
+			search.setQ(searchText);
+			search.setType("video");
+			search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+			search.setMaxResults(8L);
+
+			// do search
+			SearchListResponse searchResponse;
+			try {
+				searchResponse = search.execute();
+			} catch(IOException ex) {
+				return new ArrayList();
+			}
+
+			List<SearchResult> searchResultList = searchResponse.getItems();
+
+			List<YoutubeVideo> videos = new LinkedList<YoutubeVideo>();
+			if (searchResultList.size() == 0) {
+				return videos;
+			} else {
+				Iterator<SearchResult> it = searchResultList.iterator();
+				while (it.hasNext()) {
+					SearchResult result = it.next();
+					ResourceId rId = result.getId();
+					if (rId.getKind().equals("youtube#video")) {
+						YoutubeVideo item = new YoutubeVideo();
+
+						item.id = rId.getVideoId();
+
+						item.title = result.getSnippet().getTitle();
+
+						String urlString = "https://i.ytimg.com/vi/" + rId.getVideoId() + "/0.jpg";
+						URL url = null;
+						try {
+							url = new URL(urlString);
+						} catch (MalformedURLException e) {
+							// not used
+						}
+						try {
+							item.picturePath = null;
+							Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+							File outputDir = getCacheDir();
+							File outputFile = File.createTempFile("youtube_thumbnail", ".png", outputDir);
+							bitmap.compress(Bitmap.CompressFormat.PNG, 90, new FileOutputStream(outputFile));
+							bitmap = null;
+							item.picturePath = outputFile.getPath();
+						} catch (IOException e) {
+							// not used
+						}
+
+						videos.add(item);
+					}
+				}
+
+				return videos;
+			}
+		}
+	}
 	
 	private OnClickListener onSearch = new OnClickListener() {
 		@Override
 		public void onClick(View view) {
-			try {
-				searchButton.setEnabled(false);
-				
-				// get search text
-				String searchText = searchEditText.getText().toString();
-				
-				// prepare youtube search
-				YouTube.Search.List search = youtubeSearch.list("id,snippet");
-				search.setKey(Configurations.BROWSER_KEY);
-				search.setQ(searchText);
-				search.setType("video");
-				search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
-				search.setMaxResults(8L);
-				
-				// do search
-				try {
-					SearchListResponse searchResponse = search.execute();
-					
-					List<SearchResult> searchResultList = searchResponse.getItems();
-					if (searchResultList.size() == 0) {
-						String noVideoStr = getResources().getString(R.string.activity_youtube_search_no_video);
-						Toast toast = Toast.makeText(YoutubeSearchActivity.this, noVideoStr, Toast.LENGTH_LONG);
-						toast.show();
-					} else {
-						List<YoutubeVideo> videos = new LinkedList<YoutubeVideo>();
-						Iterator<SearchResult> it = searchResultList.iterator();
-						while (it.hasNext()) {
-							SearchResult result = it.next();
-							ResourceId rId = result.getId();
-							if (rId.getKind().equals("youtube#video")) {
-								YoutubeVideo item = new YoutubeVideo();
-								
-								item.id = rId.getVideoId();
-								
-								item.title = result.getSnippet().getTitle();
+			searchButton.setEnabled(false);
 
-								String urlString = "https://i.ytimg.com/vi/" + rId.getVideoId() + "/0.jpg";
-								URL url = null;
-								try {
-									url = new URL(urlString);
-								} catch (MalformedURLException e) {
-									// not used
-								}
-								try {
-									item.picturePath = null;
-									Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-									File outputDir = getCacheDir();
-									File outputFile = File.createTempFile("youtube_thumbnail", ".png", outputDir);
-									bitmap.compress(Bitmap.CompressFormat.PNG, 90, new FileOutputStream(outputFile));
-									bitmap = null;
-									item.picturePath = outputFile.getPath();
-								} catch (IOException e) {
-									// not used
-								}
-								
-								videos.add(item);
-							}
-						}
-						showResults(videos);
-					}
-				} catch (IOException e) {
-					String failedStr = getResources().getString(R.string.activity_youtube_search_failed);
-					Toast toast = Toast.makeText(YoutubeSearchActivity.this, failedStr, Toast.LENGTH_LONG);
+			// get search text
+			String searchText = searchEditText.getText().toString();
+			try {
+				SearchVideoTask searchVideoTask = new SearchVideoTask();
+				List<YoutubeVideo> videos = searchVideoTask.execute(searchText).get();
+
+				if(videos.size() == 0) {
+					String noVideoStr = getResources().getString(R.string.activity_youtube_search_no_video);
+					Toast toast = Toast.makeText(YoutubeSearchActivity.this, noVideoStr, Toast.LENGTH_LONG);
 					toast.show();
-					searchButton.setEnabled(true);
-				}				
-			} catch (IOException e) {
-				String failedStr = getResources().getString(R.string.activity_youtube_search_no_request);
+				} else {
+					showResults(videos);
+				}
+			} catch (InterruptedException e) {
+				String failedStr = getResources().getString(R.string.activity_youtube_search_failed);
+				Toast toast = Toast.makeText(YoutubeSearchActivity.this, failedStr, Toast.LENGTH_LONG);
+				toast.show();
+				searchButton.setEnabled(true);
+			} catch (ExecutionException e){
+				String failedStr = getResources().getString(R.string.activity_youtube_search_failed);
 				Toast toast = Toast.makeText(YoutubeSearchActivity.this, failedStr, Toast.LENGTH_LONG);
 				toast.show();
 				searchButton.setEnabled(true);
