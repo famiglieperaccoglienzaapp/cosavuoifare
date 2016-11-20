@@ -152,7 +152,7 @@ public class DbFirstLoader {
 		long vp1 = addYoutubeVideo(dbu, res.getString(R.string.fc_germany_vs_brasil), new String[] { Configurations.YOUTUBE_PREFIX + "r3m8_YmTDDM" });
 		callback.onStep(incrementer.inc(), res.getString(R.string.fs_create_main_table),
 				res.getString(R.string.fs_create_table) + res.getString(R.string.fc_lo_hobbit));
-		long vp2 = addYoutubeVideo(dbu, res.getString(R.string.fc_lo_hobbit), new String[] { Configurations.YOUTUBE_PREFIX + "7mYAyN4ryMQ" });
+		long vp2 = addYoutubeVideo(dbu, res.getString(R.string.fc_lo_hobbit), new String[] { Configurations.YOUTUBE_PREFIX + "3TinhaHqAzA" });
 		
 		callback.onStep(incrementer.inc(), res.getString(R.string.fs_create_main_table),
 				res.getString(R.string.fs_create_table) + res.getString(R.string.fc_main_table));
